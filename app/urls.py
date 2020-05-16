@@ -11,8 +11,8 @@ urlpatterns = [
     path('editor', views.editor_base, name='editor-profile'),
     path('publisher', views.publisher_base, name='publisher-profile'),
 
-    path('journal', views.journal_list),
-    path('journal/<int:journal_id>', views.journal_view),
+    path('journal', views.journal_list, name='journal-list'),
+    path('journal/<int:journal_id>', views.journal_view, name='journal-detail'),
     path('article/<int:article_id>', views.article_view, name='article-detail'),
     path('journal/<int:journal_id>/submit-article', views.submit_article, name='submit-article'),
 

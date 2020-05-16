@@ -48,8 +48,6 @@ def where_next(request):
         return HttpResponseRedirect(reverse('editor-profile'))
     elif request.user.user_type == "PUBLISHER":
         return HttpResponseRedirect(reverse('publisher-profile'))
-    else:
-        return HttpResponseRedirect(reverse('login'))
 
 
 @user_passes_test(is_author)

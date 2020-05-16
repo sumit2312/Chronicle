@@ -1,18 +1,111 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}
+
+    {% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- Font Awesome if you need it  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css">
+    <!--Replace with your tailwind.css once created-->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+
+    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+    <style>
+        .gradient {
+            background: linear-gradient(90deg, #3b9e95 0%, #4dc0b5 100%);
+        }
+
+    </style>
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
 </head>
-<body>
-    {{ journal.description }}
-    <p>{{ request.user }}</p>
-    <a href="{{ journal.id }}/submit-article">
-      <div class="panel-block">
-        <button class="button is-link is-outlined is-fullwidth">
-          Submit an article
-        </button>
-      </div>
+<body class="leading-normal tracking-normal text-gray-800 antialiased bg-gray-100" style="font-family: 'Roboto', sans-serif;">
+<header class="border-b md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4">
+
+  <!-- Logo text or image -->
+  <div class="flex items-center justify-between mb-4 md:mb-0">
+    <h1 class="leading-none text-2xl text-grey-darkest">
+      <a class="no-underline text-grey-darkest hover:text-black" href="#">
+        Site Title
+      </a>
+    </h1>
+
+    <a class="text-black hover:text-orange md:hidden" href="#">
+      <i class="fa fa-2x fa-bars"></i>
     </a>
+  </div>
+  <!-- END Logo text or image -->
+
+  <!-- Search field -->
+  <form class="mb-4 w-full md:mb-0 md:w-1/4">
+    <label class="hidden" for="search-form">Search</label>
+    <input class="bg-grey-lightest border-2 focus:border-orange p-2 rounded-lg shadow-inner w-full" placeholder="Search" type="text">
+    <button class="hidden">Submit</button>
+  </form>
+  <!-- END Search field -->
+
+  <!-- Global navigation -->
+  <nav>
+    <ul class="list-reset md:flex md:items-center">
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">
+          Products
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">
+          About
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- END Global navigation -->
+
+</header>
+
+
+    <div class="container mx-auto p-8">
+
+        <div class="bg-white p-10 shadow-md rounded-lg overflow-hidden lg:flex">
+            <div class=>
+                <h1 class="text-gray-800 text-4xl font-bold mb-4">{{ journal.code }}</h1>
+                <p class="text-gray-800 mb-4">{{ journal.subject }}</p>
+                <p class="mb-4">{{ journal.description }}</p>
+
+                <a href="{{ journal.id }}/submit-article" class="inline-block px-3 py-2 mt-5 bg-teal-500 text-white rounded shadow">Submit an article</a>
+            </div>
+            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+                <div class="ml-16  ">
+                    <img src="{{ journal.j_image.url }}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
 </body>
 </html>
