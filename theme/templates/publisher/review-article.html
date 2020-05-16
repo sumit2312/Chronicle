@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {#  Section    #}
+    <form action="" method="post">{% csrf_token %}
+        <table>
+            <tr>
+            <td>
+            <b>Proposed Article:</b>
+            </td>
+            <td>
+            <b>{{ article.title }}</b>
+            </td>
+            </tr>
+            <tr>
+            <td>
+            <b>Author:</b>
+            </td>
+            <td>
+            <b>{{ article.author.email }}</b>
+            </td>
+            </tr>
+            <tr>
+            <td>
+            <b>Abstract:</b>
+            </td>
+            <td>
+            <b>{{ article.abstract }}</b>
+            </td>
+            </tr>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit" />
+    </form>
+    {# END  Section    #}
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<strong class="level-item">Accepted Article</strong>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Article Title</th>
+            <th>Journal</th>
+            <th>Submitted</th>
+        </tr>
+        </thead>
+
+        {% for article in accepted_articles %}
+        <tbody>
+        <tr>
+            <th> 1</th>
+            <th><a href="article-list/accepted/{{ article.id }}">{{ article.title }}</a></th>
+            <th>{{ article.journal.code }}</th>
+            <th>{{ article.created_at|timesince }}</th>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+    <strong class="level-item">Published Article</strong>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Article Title</th>
+            <th>Journal</th>
+            <th>Submitted</th>
+        </tr>
+        </thead>
+
+        {% for article in published_article %}
+        <tbody>
+        <tr>
+            <th> 1</th>
+            <th><a href="article-list/accepted/{{ article.id }}">{{ article.title }}</a></th>
+            <th>{{ article.journal.code }}</th>
+            <th>{{ article.created_at|timesince }}</th>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+        <nav class="level">
+            <div class="level-left">
+                <div class="level-item">
+                    <span class="icon has-text-info is-large">
+                        <i class="fas fa-sticky-note"></i>
+                    </span>
+                    {{user.user_type}}
+
+                </div>
+                <div class="level-item">
+                    <span class="icon has-text-info is-large">
+                        <i class="fas fa-clock"></i>
+                    </span>
+                    {{user.email}}
+                </div>
+            </div>
+            <!-- Right side -->
+            <div class="level-right">
+                <div class="level-item">
+                <a href="{% url 'logout' %}"><div class = "button ">LOG OUT</div></a>
+                <div class="level-item">
+                </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <strong class="level-item">Pending Article</strong>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Article Title</th>
+            <th>Journal</th>
+            <th>Submitted</th>
+        </tr>
+        </thead>
+        {% for article in pending_articles %}
+        <tbody>
+        <tr>
+            <th> 1 </th>
+            <th><a href="article-list/pending/{{ article.id }}">{{ article.title }}</a></th>
+            <th>{{ article.journal.code }}</th>
+            <th>{{ article.created_at|timesince }}</th>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <strong class="level-item">Accepted Article</strong>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Article Title</th>
+            <th>Journal</th>
+            <th>Submitted</th>
+        </tr>
+        </thead>
+        {% for article in accepted_articles %}
+        <tbody>
+        <tr>
+            <th> 1 </th>
+            <th><a href="article-list/accepted/{{ article.id }}">{{ article.title }}</a></th>
+            <th>{{ article.journal.code }}</th>
+            <th>{{ article.created_at|timesince }}</th>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <strong class="level-item">Rejected Article</strong>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Article Title</th>
+            <th>Journal</th>
+            <th>Submitted</th>
+        </tr>
+        </thead>
+        {% for article in rejected_articles %}
+        <tbody>
+        <tr>
+            <th> 1 </th>
+            <th><a href="article-list/accepted/{{ article.id }}">{{ article.title }}</a></th>
+            <th>{{ article.journal.code }}</th>
+            <th>{{ article.created_at|timesince }}</th>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</body>
+</html>

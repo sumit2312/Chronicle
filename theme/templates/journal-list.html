@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for journal in journals %}
+        <div class="column">
+            <div class="notification is-info ">
+                <p class="has-text-light">Journal Name - {{ journal.code }}</p>
+                <p>Journal Description - </p>
+                <p>
+                    {{ journal.description }}
+                </p>
+                {#<p>{{ journal.id }}</p>#}
+                <a href="{{ journal.get_absolute_url }}">Link</a>
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>

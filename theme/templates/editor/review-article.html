@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+        <nav class="level">
+            <div class="level-left">
+                <div class="level-item">
+                    <span class="icon has-text-info is-large">
+                        <i class="fas fa-sticky-note"></i>
+                    </span>
+                    {{user.user_type}}
+
+                </div>
+                <div class="level-item">
+                    <span class="icon has-text-info is-large">
+                        <i class="fas fa-clock"></i>
+                    </span>
+                    {{user.email}}
+                </div>
+            </div>
+            <!-- Right side -->
+            <div class="level-right">
+                <div class="level-item">
+                <a href="{% url 'logout' %}"><div class = "button ">LOG OUT</div></a>
+                <div class="level-item">
+                </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+    {#  Section    #}
+    <form action="" method="post">{% csrf_token %}
+        <table>
+            <tr>
+            <td>
+            <b>Proposed Article:</b>
+            </td>
+            <td>
+            <b>{{ article.title }}</b>
+            </td>
+            </tr>
+            <tr>
+            <td>
+            <b>Author:</b>
+            </td>
+            <td>
+            <b>{{ article.author.email }}</b>
+            </td>
+            </tr>
+            <tr>
+            <td>
+            <b>Abstract:</b>
+            </td>
+            <td>
+            <b>{{ article.abstract }}</b>
+            </td>
+            </tr>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>

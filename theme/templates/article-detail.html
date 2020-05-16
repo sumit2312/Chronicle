@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          {{ article.title }}
+        </p>
+
+        <a href="#" class="card-header-icon" aria-label="more options">
+          <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </a>
+      </header>
+        <p> Article Volume - {{ article.volume }}</p>
+          <p> Article Issue - {{ article.issue }}</p>
+      <div class="card-content">
+        <div class="content">
+            <strong>article-abstract</strong>
+            <br>
+          {{ article.abstract }}
+            <h1>text</h1>
+            {{ article.text|safe }}
+          <br>
+            <strong>Time</strong>
+          <time datetime="2016-1-1">{{ article.published_at }}</time>
+        </div>
+      </div>
+</body>
+</html>
