@@ -43,8 +43,8 @@
   <!-- Logo text or image -->
   <div class="flex items-center justify-between mb-4 md:mb-0">
     <h1 class="leading-none text-2xl text-grey-darkest">
-      <a class="no-underline text-grey-darkest hover:text-black" href="#">
-        Site Title
+      <a class="no-underline text-grey-darkest hover:text-black" href="{% url 'home' %}">
+        Chronicle
       </a>
     </h1>
 
@@ -63,25 +63,47 @@
   <!-- END Search field -->
 
   <!-- Global navigation -->
+  {% if user.is_authenticated %}
   <nav>
     <ul class="list-reset md:flex md:items-center">
       <li class="md:ml-4">
-        <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">
-          Products
+        <a class="block no-underline hover:underline py-2 text-grey-700 hover:text-black md:border-none md:p-0" href="#">
+        {{ user.name }}
         </a>
       </li>
       <li class="md:ml-4">
-        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">
-          About
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'home' %}">
+          Home
         </a>
       </li>
       <li class="md:ml-4">
-        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">
-          Contact
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'logout' %}">
+          Log out
         </a>
       </li>
     </ul>
   </nav>
+    {% else %}
+        <nav>
+    <ul class="list-reset md:flex md:items-center">
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'login' %}">
+            Log In
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'home' %}">
+          Home
+        </a>
+      </li>
+{#      <li class="md:ml-4">#}
+{#        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">#}
+{#          Contact#}
+{#        </a>#}
+{#      </li>#}
+    </ul>
+  </nav>
+    {% endif %}
   <!-- END Global navigation -->
 
 </header>
@@ -94,8 +116,9 @@
                 <h1 class="text-gray-800 text-4xl font-bold mb-4">{{ journal.code }}</h1>
                 <p class="text-gray-800 mb-4">{{ journal.subject }}</p>
                 <p class="mb-4">{{ journal.description }}</p>
-
-                <a href="{{ journal.id }}/submit-article" class="inline-block px-3 py-2 mt-5 bg-teal-500 text-white rounded shadow">Submit an article</a>
+{#                {% if user.is_authenticated and user.is_author %}#}
+                    <a href="{{ journal.id }}/submit-article" class="inline-block px-3 py-2 mt-5 bg-teal-500 text-white rounded shadow">Submit an article</a>
+{#                {% endif %}#}
             </div>
             <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
                 <div class="ml-16  ">
@@ -105,7 +128,72 @@
         </div>
     </div>
 
+<p class="antialiased text-center mx-16 text-gray-700 text-3xl">Articles</p>
 
-</body>
+<main class="py-4 mx-16">
+
+  <div class="px-4">
+    <div class="block md:flex justify-between md:-mx-2">
+        {% for x in articles %}
+      <div class="w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">
+        <div class="bg-white rounded-lg overflow-hidden shadow relative">
+{#          <img class="h-56 w-full object-cover object-center" src="https://images.unsplash.com/photo-1457282367193-e3b79e38f207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80" alt="">#}
+          <div class="p-4 h-auto md:h-40 lg:h-48">
+            <a href="{{ x.get_absolute_url }}" class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
+              {{ x.title }}
+            </a>
+            <div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
+                {{ x.abstract | truncatewords:20 }}
+            </div>
+
+            <div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">
+                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Author - {{ x.author.name}}</a>
+                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Volume - {{ x.volume }}</a>
+                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Issue - {{ x.issue }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+{#      <div class="w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">#}
+{#        <div class="bg-white rounded-lg overflow-hidden shadow relative">#}
+{#          <img class="h-56 w-full object-cover object-center" src="https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="">#}
+{#          <div class="p-4 h-auto md:h-40 lg:h-48">#}
+{#            <a href="#" class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">#}
+{#              Woman walking on pathway#}
+{#            </a>#}
+{#            <div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">#}
+{#              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure aut quia alias ullam eveniet sunt! Ipsa, sunt. Inventore ipsum sit quasi. Alias quasi officiis blanditiis!#}
+{#            </div>#}
+{#            <div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">#}
+{#              <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs lowercase text-gray-700" href="#">#pathway</a>#}
+{#              <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs lowercase text-gray-700" href="#">#woman</a>#}
+{#              <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs lowercase text-gray-700" href="#">#walkalone</a>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#      <div class="w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">#}
+{#        <div class="bg-white rounded-lg overflow-hidden shadow relative">#}
+{#          <img class="h-56 w-full object-cover object-center" src="https://images.unsplash.com/photo-1467238307002-480ffdd260f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="">#}
+{#          <div class="p-4 h-auto md:h-40 lg:h-48">#}
+{#            <a href="#" class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">#}
+{#              Walking through a forest in the afternoon#}
+{#            </a>#}
+{#            <div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">#}
+{#              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi nemo magni saepe cumque error quia quae sint ducimus, maiores doloremque.#}
+{#            </div>#}
+{#            <div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">#}
+{#              <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs lowercase text-gray-700" href="#">#forest</a>#}
+{#              <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs lowercase text-gray-700" href="#">#walk</a>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+    </div>
+  </div>
+</main>
+
+
 </body>
 </html>

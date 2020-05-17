@@ -149,7 +149,7 @@ class Article(models.Model):
     keywords = models.ManyToManyField(Keyword, related_name="keywords")
 
     def get_absolute_url(self):
-        return f"/article/{self.id}"
+        return f"/profiles/article/{self.id}"
 
 
 class EditorNote(models.Model):

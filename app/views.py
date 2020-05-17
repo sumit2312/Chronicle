@@ -86,7 +86,7 @@ def journal_view(request, journal_id):
     # print(articles)
     context = {
         'journal': journal,
-        'articles': articles
+        'articles': articles,
     }
     return render(request, template_name, context)
 
@@ -94,8 +94,11 @@ def journal_view(request, journal_id):
 def article_view(request, article_id):
     template_name = 'article-detail.html'
     article = get_object_or_404(Article, id=article_id)
+    keywords = article.keywords
+    print(keywords)
     context = {
-        'article': article
+        'article': article,
+        'keywords': keywords,
     }
     return render(request, template_name, context)
 

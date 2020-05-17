@@ -1,35 +1,150 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-          {{ article.title }}
-        </p>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}
+    Article
+    {% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- Font Awesome if you need it  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 
-        <a href="#" class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css">
+    <!--Replace with your tailwind.css once created-->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+
+    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+    <style>
+        .gradient {
+            background: linear-gradient(90deg, #3b9e95 0%, #4dc0b5 100%);
+        }
+
+    </style>
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+</head>
+<body class="leading-normal tracking-normal text-gray-800 antialiased bg-gray-100" style="font-family: 'Roboto', sans-serif;">
+<header class="border-b md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4">
+
+  <!-- Logo text or image -->
+  <div class="flex items-center justify-between mb-4 md:mb-0">
+    <h1 class="leading-none text-2xl text-grey-darkest">
+      <a class="no-underline text-grey-darkest hover:text-black" href="{% url 'home' %}">
+        Chronicle
+      </a>
+    </h1>
+
+    <a class="text-black hover:text-orange md:hidden" href="#">
+      <i class="fa fa-2x fa-bars"></i>
+    </a>
+  </div>
+  <!-- END Logo text or image -->
+
+  <!-- Search field -->
+  <form class="mb-4 w-full md:mb-0 md:w-1/4">
+    <label class="hidden" for="search-form">Search</label>
+    <input class="bg-grey-lightest border-2 focus:border-orange p-2 rounded-lg shadow-inner w-full" placeholder="Search" type="text">
+    <button class="hidden">Submit</button>
+  </form>
+  <!-- END Search field -->
+
+  <!-- Global navigation -->
+  {% if user.is_authenticated %}
+  <nav>
+    <ul class="list-reset md:flex md:items-center">
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-grey-700 hover:text-black md:border-none md:p-0" href="#">
+        {{ user.name }}
         </a>
-      </header>
-        <p> Article Volume - {{ article.volume }}</p>
-          <p> Article Issue - {{ article.issue }}</p>
-      <div class="card-content">
-        <div class="content">
-            <strong>article-abstract</strong>
-            <br>
-          {{ article.abstract }}
-            <h1>text</h1>
-            {{ article.text|safe }}
-          <br>
-            <strong>Time</strong>
-          <time datetime="2016-1-1">{{ article.published_at }}</time>
-        </div>
-      </div>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">
+          {{ user.email }}
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'logout' %}">
+          Log out
+        </a>
+      </li>
+    </ul>
+  </nav>
+    {% else %}
+        <nav>
+    <ul class="list-reset md:flex md:items-center">
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'login' %}">
+            Log In
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'home' %}">
+          Home
+        </a>
+      </li>
+{#      <li class="md:ml-4">#}
+{#        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">#}
+{#          Contact#}
+{#        </a>#}
+{#      </li>#}
+    </ul>
+  </nav>
+    {% endif %}
+  <!-- END Global navigation -->
+
+</header>
+{# MAIN DETAILS#}
+<div class="container mx-auto my-10 bg-white p-5 shadow-md rounded-lg overflow-hidden ">
+    <div class="text-center">
+        <h3 class="mb-2 text-base text-teal-700 text-3xl hover:text-gray-700">{{ article.issue_title }}</h3>
+        <p class="text-left text-teal-700 text-xl"><strong>Abstract</strong></p>
+        <p class="text-grey-600 text text-left">{{ article.abstract }}</p>
+    </div>
+​   <div class="mt-4 text-teal-500">
+        <strong>Journal - </strong>{{ article.journal }}
+    </div>
+    <div class="mt-4">
+        <a  class="no-underline mr-4 text-teal-500 mb-1  item-center hover:text-blue-400"><strong>Vol.</strong>{{ article.volume }}</a>
+        <a  class="no-underline mr-4 text-teal-500 mb-1  item-center hover:text-blue-400"><strong>Issue.</strong> {{ article.issue }}</a>
+    </div>
+    <div class="mt-4">
+        {% if keywords.all %}
+            <p class="inline p-2 text-teal-500"><strong>Keywords</strong> - </p>
+        {% endif %}
+        {% for key in keywords.all %}
+            <a class="inline bg-teal-500 py-1 px-4 mx-1  rounded-full  text-white" href="#">{{ key }}</a>
+        {% endfor %}
+
+    </div>
+
+</div>
+{#ARTICLE TEXT#}
+<div class="container mx-auto p-8">
+
+    <div class="bg-white p-10 shadow-md rounded-lg overflow-hidden ">
+        <p><strong></strong></p>
+        {{ article.text|safe }}
+    </div>
+    <hr>
+    <strong>Time</strong>
+    <time datetime="2016-1-1">{{ article.published_at }}</time>
+</div>
+
+
+
 </body>
 </html>
