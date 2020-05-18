@@ -1,18 +1,1074 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}
+
+    {% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- Font Awesome if you need it  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+{# https://codepen.io/ramene/pen/vYEKrab?__cf_chl_jschl_tk__=1960b16464f898da803ea72147243252022516ee-1589727124-0-ATMfxsD3sXET4mXOkb-6Y8JW3kxoJcD1u8C_V9il2B98h07C0UhcTp77V3R8PQKLVhhuHljqTUHU8UIaWRz3SSzfCFBSRt4WHRBFW_rqJxqkXTZFM3fcbXAy2-74jvytbgb5tWzIzRxflx2a8IG-lVAqEUq-gGqcyhz6LWegvfWel75G0vG-tt1w_tB-zgcwjRr5DuocgSHZUQtZSWTrcMW8-67_tPHLOOM_9VwmbZEsr4_c4gwrrjEAGDmUjHvDhjg9i1QET0AH6QsO-D_o-Dq6h_wso9hjJod6oXgSnrNoJbGf-TAb3nY921fibyYi_3BHgiL0q8dYtO1F-wDOfZph_zVXHMOY0bEJfqO8cpdO #}
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css">
+    <!--Replace with your tailwind.css once created-->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+
+    <style>
+        .gradient {
+            background: linear-gradient(90deg, #000428 0%, #004e92 100%);
+        }
+        .shadow-light,
+        .hover\:shadow-light:hover {
+            text-shadow: 1px 1px 0 rgba(244, 244, 240, 1), 2px 2px 0 rgba(81, 76, 77, .3);
+        }
+
+        input:focus,
+        textarea:focus {
+            box-shadow: inset 0 0 6px rgba(0,0,0,.4);
+            outline: none;
+        }
+
+        .button {
+            @apply .inline-block .mt-6 .rounded .shadow .py-2 .px-4 .no-underline .border-0;
+        }
+
+        /* @apply doesn't work on code pen. */
+        /* The above renders out to: */
+        .button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            border-radius: .25rem;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            text-decoration: none;
+            border: 0;
+        }
+
+        .overflow-y-hidden {
+            overflow-y: hidden;
+        }
+
+        .overflow-x-hidden {
+            overflow-x: hidden;
+        }
+
+        .border-x-0 {
+            border-left: 0;
+            border-right: 0;
+        }
+
+        .border-y-0 {
+            border-top: 0;
+            border-bottom: 0;
+        }
+
+        .hover\:shadow:hover {
+            @apply .shadow;
+        }
+
+
+        // Custom stuffs from my tailwind.js
+           .bg-brick-lightest,
+           .hover\:bg-brick-lightest:hover {
+               background-color: #dbcdcc;
+           }
+
+        .bg-brick-lighter,
+        .hover\:bg-brick-lighter:hover {
+            background-color: #c2a3a0;
+        }
+
+        .bg-brick-light,
+        .hover\:bg-brick-light:hover {
+            background-color: #aa7f7b;
+        }
+
+        .bg-brick,
+        .hover\:bg-brick:hover {
+            background-color: #93625b;
+        }
+
+        .bg-brick-dark,
+        .hover\:bg-brick-dark:hover {
+            background-color: #75413f;
+        }
+
+        .bg-brick-darker,
+        .hover\:bg-brick-darker:hover {
+            background-color: #421e1b;
+        }
+
+        .bg-brick-darkest,
+        .hover\:bg-brick-darkest:hover {
+            background-color: #260d0c;
+        }
+
+        .bg-cream-lightest,
+        .hover\:bg-cream-lightest:hover {
+            background-color: #fff;
+        }
+
+        .bg-cream-lighter,
+        .hover\:bg-cream-lighter:hover {
+            background-color: #f9f9fa;
+        }
+
+        .bg-cream-light,
+        .hover\:bg-cream-light:hover {
+            background-color: #f4f4f5;
+        }
+
+        .bg-cream,
+        .hover\:bg-cream:hover {
+            background-color: #f4f4f0;
+        }
+
+        .bg-cream-dark,
+        .hover\:bg-cream-dark:hover {
+            background-color: #d9d5c3;
+        }
+
+        .bg-cream-darker,
+        color: #e0e0e0;
+        }
+
+        .md\:text-gold-lighter,
+        .md\:hover\:text-gold-lighter:hover {
+            color: #c9c9c9;
+        }
+
+        .md\:text-gold-light,
+        .md\:hover\:text-gold-light:hover {
+            color: #b0ada7;
+        }
+
+        .md\:text-gold,
+        .md\:hover\:text-gold:hover {
+            color: #989488;
+        }
+
+        .md\:text-gold-dark,
+        .md\:hover\:text-gold-dark:hover {
+            color: #7c7664;
+        }
+
+        .md\:text-gold-darker,
+        .md\:hover\:text-gold-darker:hover {
+            color: #635a46;
+        }
+
+        .md\:text-gold-darkest,
+        .md\:hover\:text-gold-darkest:hover {
+            color: #473e2b;
+        }
+
+        .lg\:text-brick-lightest,
+        .lg\:hover\:text-brick-lightest:hover {
+            color: #dbcdcc;
+        }
+
+        .lg\:text-brick-lighter,
+        .lg\:hover\:text-brick-lighter:hover {
+            color: #c2a3a0;
+        }
+
+        .lg\:text-brick-light,
+        .lg\:hover\:text-brick-light:hover {
+            color: #aa7f7b;
+        }
+
+        .lg\:text-brick,
+
+        .xl\:text-brick,
+        .xl\:hover\:text-brick:hover {
+            color: #93625b;
+        }
+
+        .xl\:text-brick-dark,
+        .xl\:hover\:text-brick-dark:hover {
+            color: #75413f;
+        }
+
+        .xl\:text-brick-darker,
+        .xl\:hover\:text-brick-darker:hover {
+            color: #421e1b;
+        }
+
+        .xl\:text-brick-darkest,
+        .xl\:hover\:text-brick-darkest:hover {
+            color: #260d0c;
+        }
+
+        .xl\:text-cream-lightest,
+        .xl\:hover\:text-cream-lightest:hover {
+            color: #fff;
+        }
+
+        .xl\:text-cream-lighter,
+        .xl\:hover\:text-cream-lighter:hover {
+            color: #f9f9fa;
+        }
+
+        .xl\:text-cream-light,
+        .xl\:hover\:text-cream-light:hover {
+            color: #f4f4f5;
+        }
+
+        .xl\:text-cream,
+        .xl\:hover\:text-cream:hover {
+            color: #f4f4f0;
+        }
+
+        .xl\:text-cream-dark,
+        .xl\:hover\:text-cream-dark:hover {
+            color: #d9d5c3;
+        }
+
+        .xl\:text-cream-darker,
+        .xl\:hover\:text-cream-darker:hover {
+            color: #bfba99;
+        }
+
+        .xl\:text-cream-darkest,
+        .xl\:hover\:text-cream-darkest:hover {
+            color: #a39a73;
+        }
+
+        .xl\:text-charcoal-lightest,
+        .xl\:hover\:text-charcoal-lightest:hover {
+            color: #969696;
+        }
+
+        .xl\:text-charcoal-lighter,
+        .xl\:hover\:text-charcoal-lighter:hover {
+            color: #7f7f7f;
+        }
+
+        .xl\:text-charcoal-light,
+        .xl\:hover\:text-charcoal-light:hover {
+            color: #686868;
+        }
+
+        .xl\:text-charcoal,
+        .xl\:hover\:text-charcoal:hover {
+            color: #514c4d;
+        }
+
+        .xl\:text-charcoal-dark,
+        .xl\:hover\:text-charcoal-dark:hover {
+            color: #332b2d;
+        }
+
+        .xl\:text-charcoal-darker,
+        .xl\:hover\:text-charcoal-darker:hover {
+            color: #1a1416;
+        }
+
+        .xl\:text-charcoal-darkest,
+        .xl\:hover\:text-charcoal-darkest:hover {
+            color: #0c090a;
+        }
+
+        .xl\:text-gold-lightest,
+        .xl\:hover\:text-gold-lightest:hover {
+            color: #e0e0e0;
+        }
+
+        .xl\:text-gold-lighter,
+        .xl\:hover\:text-gold-lighter:hover {
+            color: #c9c9c9;
+        }
+
+        .xl\:text-gold-light,
+        .xl\:hover\:text-gold-light:hover {
+            color: #b0ada7;
+        }
+
+        .xl\:text-gold,
+        .xl\:hover\:text-gold:hover {
+            color: #989488;
+        }
+
+        .xl\:text-gold-dark,
+        .xl\:hover\:text-gold-dark:hover {
+            color: #7c7664;
+        }
+
+        .xl\:text-gold-darker,
+        .xl\:hover\:text-gold-darker:hover {
+            color: #635a46;
+        }
+
+        .xl\:text-gold-darkest,
+        .xl\:hover\:text-gold-darkest:hover {
+            color: #473e2b;
+        }
+
+        .text-brick-lightest,
+        .hover\:text-brick-lightest:hover {
+            color: #dbcdcc;
+        }
+
+        .text-brick-lighter,
+        .hover\:text-brick-lighter:hover {
+            color: #c2a3a0;
+        }
+
+        .text-brick-light,
+        .hover\:text-brick-light:hover {
+            color: #aa7f7b;
+        }
+
+        .text-brick,
+        .hover\:text-brick:hover {
+            color: #93625b;
+        }
+
+        .text-brick-dark,
+        .hover\:text-brick-dark:hover {
+            color: #75413f;
+        }
+
+        .text-brick-darker,
+        .hover\:text-brick-darker:hover {
+            color: #421e1b;
+        }
+
+        .text-brick-darkest,
+        .hover\:text-brick-darkest:hover {
+            color: #260d0c;
+        }
+
+        .text-cream-lightest,
+        .hover\:text-cream-lightest:hover {
+            color: #fff;
+        }
+
+        .text-cream-lighter,
+        .hover\:text-cream-lighter:hover {
+            color: #f9f9fa;
+        }
+
+        .text-cream-light,
+        .hover\:text-cream-light:hover {
+            color: #f4f4f5;
+        }
+
+        .text-cream,
+        .hover\:text-cream:hover {
+            color: #f4f4f0;
+        }
+
+        .text-cream-dark,
+        .hover\:text-cream-dark:hover {
+            color: #d9d5c3;
+        }
+
+        .text-cream-darker,
+        .hover\:text-cream-darker:hover {
+            color: #bfba99;
+        }
+
+        .text-cream-darkest,
+        .hover\:text-cream-darkest:hover {
+            color: #a39a73;
+        }
+
+        .text-charcoal-lightest,
+        .hover\:text-charcoal-lightest:hover {
+            color: #969696;
+        }
+
+        .text-charcoal-lighter,
+        .hover\:text-charcoal-lighter:hover {
+            color: #7f7f7f;
+        }
+
+        .text-charcoal-light,
+        .hover\:text-charcoal-light:hover {
+            color: #686868;
+        }
+
+        .text-charcoal,
+        .hover\:text-charcoal:hover {
+            color: #514c4d;
+        }
+
+        .text-charcoal-dark,
+        .hover\:text-charcoal-dark:hover {
+            color: #332b2d;
+        }
+
+        .text-charcoal-darker,
+        .hover\:text-charcoal-darker:hover {
+            color: #1a1416;
+        }
+
+        .text-charcoal-darkest,
+        .hover\:text-charcoal-darkest:hover {
+            color: #0c090a;
+        }
+
+        .text-gold-lightest,
+        .hover\:text-gold-lightest:hover {
+            color: #e0e0e0;
+        }
+
+        .text-gold-lighter,
+        .hover\:text-gold-lighter:hover {
+            color: #c9c9c9;
+        }
+
+        .text-gold-light,
+        .hover\:text-gold-light:hover {
+            color: #b0ada7;
+        }
+
+        .text-gold,
+        .hover\:text-gold:hover {
+            color: #989488;
+        }
+
+        .text-gold-dark,
+        .hover\:text-gold-dark:hover {
+            color: #7c7664;
+        }
+
+        .text-gold-darker,
+        .hover\:text-gold-darker:hover {
+            color: #635a46;
+        }
+
+        .text-gold-darkest,
+        .hover\:text-gold-darkest:hover {
+            color: #473e2b;
+        }
+
+
+
+    .hover\:bg-cream-darker:hover {
+    background-color: #bfba99;
+    }
+
+    .bg-cream-darkest,
+    .hover\:bg-cream-darkest:hover {
+    background-color: #a39a73;
+    }
+
+    .bg-charcoal-lightest,
+    .hover\:bg-charcoal-lightest:hover {
+    background-color: #969696;
+    }
+
+    .bg-charcoal-lighter,
+    .hover\:bg-charcoal-lighter:hover {
+    background-color: #7f7f7f;
+    }
+
+    .bg-charcoal-light,
+    .hover\:bg-charcoal-light:hover {
+    background-color: #686868;
+    }
+
+    .bg-charcoal,
+    .hover\:bg-charcoal:hover {
+    background-color: #514c4d;
+    }
+
+    .bg-charcoal-dark,
+    .hover\:bg-charcoal-dark:hover {
+    background-color: #332b2d;
+    }
+
+    .bg-charcoal-darker,
+    .hover\:bg-charcoal-darker:hover {
+    background-color: #1a1416;
+    }
+
+    .bg-charcoal-darkest,
+    .hover\:bg-charcoal-darkest:hover {
+    background-color: #0c090a;
+    }
+
+    .bg-gold-lightest,
+    .hover\:bg-gold-lightest:hover {
+    background-color: #e0e0e0;
+    }
+
+    .bg-gold-lighter,
+    .hover\:bg-gold-lighter:hover {
+    background-color: #c9c9c9;
+    }
+
+    .bg-gold-light,
+    .hover\:bg-gold-light:hover {
+    background-color: #b0ada7;
+    }
+
+    .bg-gold,
+    .hover\:bg-gold:hover {
+    background-color: #989488;
+    }
+
+    .bg-gold-dark,
+    .hover\:bg-gold-dark:hover {
+    background-color: #7c7664;
+    }
+
+    .bg-gold-darker,
+    .hover\:bg-gold-darker:hover {
+    background-color: #635a46;
+    }
+
+    .bg-gold-darkest,
+    .hover\:bg-gold-darkest:hover {
+    background-color: #473e2b;
+    }
+
+
+    .sm\:text-brick-lightest,
+    .sm\:hover\:text-brick-lightest:hover {
+    color: #dbcdcc;
+    }
+
+    .sm\:text-brick-lighter,
+    .sm\:hover\:text-brick-lighter:hover {
+    color: #c2a3a0;
+    }
+
+    .sm\:text-brick-light,
+    .sm\:hover\:text-brick-light:hover {
+    color: #aa7f7b;
+    }
+
+    .sm\:text-brick,
+    .sm\:hover\:text-brick:hover {
+    color: #93625b;
+    }
+
+    .sm\:text-brick-dark,
+    .sm\:hover\:text-brick-dark:hover {
+    color: #75413f;
+    }
+
+    .sm\:text-brick-darker,
+    .sm\:hover\:text-brick-darker:hover {
+    color: #421e1b;
+    }
+
+    .sm\:text-brick-darkest,
+    .sm\:hover\:text-brick-darkest:hover {
+    color: #260d0c;
+    }
+
+    .sm\:text-cream-lightest,
+    .sm\:hover\:text-cream-lightest:hover {
+    color: #fff;
+    }
+
+    .sm\:text-cream-lighter,
+    .sm\:hover\:text-cream-lighter:hover {
+    color: #f9f9fa;
+    }
+
+    .sm\:text-cream-light,
+    .sm\:hover\:text-cream-light:hover {
+    color: #f4f4f5;
+    }
+
+    .sm\:text-cream,
+    .sm\:hover\:text-cream:hover {
+    color: #f4f4f0;
+    }
+
+    .sm\:text-cream-dark,
+    .sm\:hover\:text-cream-dark:hover {
+    color: #d9d5c3;
+    }
+
+    .sm\:text-cream-darker,
+    .sm\:hover\:text-cream-darker:hover {
+    color: #bfba99;
+    }
+
+    .sm\:text-cream-darkest,
+    .sm\:hover\:text-cream-darkest:hover {
+    color: #a39a73;
+    }
+
+    .sm\:text-charcoal-lightest,
+    .sm\:hover\:text-charcoal-lightest:hover {
+    color: #969696;
+    }
+
+    .sm\:text-charcoal-lighter,
+    .sm\:hover\:text-charcoal-lighter:hover {
+    color: #7f7f7f;
+    }
+
+    .sm\:text-charcoal-light,
+    .sm\:hover\:text-charcoal-light:hover {
+    color: #686868;
+    }
+
+    .sm\:text-charcoal,
+    .sm\:hover\:text-charcoal:hover {
+    color: #514c4d;
+    }
+
+    .sm\:text-charcoal-dark,
+    .sm\:hover\:text-charcoal-dark:hover {
+    color: #332b2d;
+    }
+
+    .sm\:text-charcoal-darker,
+    .sm\:hover\:text-charcoal-darker:hover {
+    color: #1a1416;
+    }
+
+    .sm\:text-charcoal-darkest,
+    .sm\:hover\:text-charcoal-darkest:hover {
+    color: #0c090a;
+    }
+
+    .sm\:text-gold-lightest,
+    .sm\:hover\:text-gold-lightest:hover {
+    color: #e0e0e0;
+    }
+
+    .sm\:text-gold-lighter,
+    .sm\:hover\:text-gold-lighter:hover {
+    color: #c9c9c9;
+    }
+
+    .sm\:text-gold-light,
+    .sm\:hover\:text-gold-light:hover {
+    color: #b0ada7;
+    }
+
+    .sm\:text-gold,
+    .sm\:hover\:text-gold:hover {
+    color: #989488;
+    }
+
+    .sm\:text-gold-dark,
+    .sm\:hover\:text-gold-dark:hover {
+    color: #7c7664;
+    }
+
+    .sm\:text-gold-darker,
+    .sm\:hover\:text-gold-darker:hover {
+    color: #635a46;
+    }
+
+    .sm\:text-gold-darkest,
+    .sm\:hover\:text-gold-darkest:hover {
+    color: #473e2b;
+    }
+
+    .md\:text-brick-lightest,
+    .md\:hover\:text-brick-lightest:hover {
+    color: #dbcdcc;
+    }
+
+    .md\:text-brick-lighter,
+    .md\:hover\:text-brick-lighter:hover {
+    color: #c2a3a0;
+    }
+
+    .md\:text-brick-light,
+    .md\:hover\:text-brick-light:hover {
+    color: #aa7f7b;
+    }
+
+    .md\:text-brick,
+    .md\:hover\:text-brick:hover {
+    color: #93625b;
+    }
+
+    .md\:text-brick-dark,
+    .md\:hover\:text-brick-dark:hover {
+    color: #75413f;
+    }
+
+    .md\:text-brick-darker,
+    .md\:hover\:text-brick-darker:hover {
+    color: #421e1b;
+    }
+
+    .md\:text-brick-darkest,
+    .md\:hover\:text-brick-darkest:hover {
+    color: #260d0c;
+    }
+
+    .md\:text-cream-lightest,
+    .md\:hover\:text-cream-lightest:hover {
+    color: #fff;
+    }
+
+    .md\:text-cream-lighter,
+    .md\:hover\:text-cream-lighter:hover {
+    color: #f9f9fa;
+    }
+
+    .md\:text-cream-light,
+    .md\:hover\:text-cream-light:hover {
+    color: #f4f4f5;
+    }
+
+    .md\:text-cream,
+    .md\:hover\:text-cream:hover {
+    color: #f4f4f0;
+    }
+
+    .md\:text-cream-dark,
+    .md\:hover\:text-cream-dark:hover {
+    color: #d9d5c3;
+    }
+
+    .md\:text-cream-darker,
+    .md\:hover\:text-cream-darker:hover {
+    color: #bfba99;
+    }
+
+    .md\:text-cream-darkest,
+    .md\:hover\:text-cream-darkest:hover {
+    color: #a39a73;
+    }
+
+    .md\:text-charcoal-lightest,
+    .md\:hover\:text-charcoal-lightest:hover {
+    color: #969696;
+    }
+
+    .md\:text-charcoal-lighter,
+    .md\:hover\:text-charcoal-lighter:hover {
+    color: #7f7f7f;
+    }
+
+    .md\:text-charcoal-light,
+    .md\:hover\:text-charcoal-light:hover {
+    color: #686868;
+    }
+
+    .md\:text-charcoal,
+    .md\:hover\:text-charcoal:hover {
+    color: #514c4d;
+    }
+
+    .md\:text-charcoal-dark,
+    .md\:hover\:text-charcoal-dark:hover {
+    color: #332b2d;
+    }
+
+    .md\:text-charcoal-darker,
+    .md\:hover\:text-charcoal-darker:hover {
+    color: #1a1416;
+    }
+
+    .md\:text-charcoal-darkest,
+    .md\:hover\:text-charcoal-darkest:hover {
+    color: #0c090a;
+    }
+
+    .md\:text-gold-lightest,
+    .md\:hover\:text-gold-lightest:hover {
+    .lg\:hover\:text-brick:hover {
+    color: #93625b;
+    }
+
+    .lg\:text-brick-dark,
+    .lg\:hover\:text-brick-dark:hover {
+    color: #75413f;
+    }
+
+    .lg\:text-brick-darker,
+    .lg\:hover\:text-brick-darker:hover {
+    color: #421e1b;
+    }
+
+    .lg\:text-brick-darkest,
+    .lg\:hover\:text-brick-darkest:hover {
+    color: #260d0c;
+    }
+
+    .lg\:text-cream-lightest,
+    .lg\:hover\:text-cream-lightest:hover {
+    color: #fff;
+    }
+
+    .lg\:text-cream-lighter,
+    .lg\:hover\:text-cream-lighter:hover {
+    color: #f9f9fa;
+    }
+
+    .lg\:text-cream-light,
+    .lg\:hover\:text-cream-light:hover {
+    color: #f4f4f5;
+    }
+
+    .lg\:text-cream,
+    .lg\:hover\:text-cream:hover {
+    color: #f4f4f0;
+    }
+
+    .lg\:text-cream-dark,
+    .lg\:hover\:text-cream-dark:hover {
+    color: #d9d5c3;
+    }
+
+    .lg\:text-cream-darker,
+    .lg\:hover\:text-cream-darker:hover {
+    color: #bfba99;
+    }
+
+    .lg\:text-cream-darkest,
+    .lg\:hover\:text-cream-darkest:hover {
+    color: #a39a73;
+    }
+
+    .lg\:text-charcoal-lightest,
+    .lg\:hover\:text-charcoal-lightest:hover {
+    color: #969696;
+    }
+
+    .lg\:text-charcoal-lighter,
+    .lg\:hover\:text-charcoal-lighter:hover {
+    color: #7f7f7f;
+    }
+
+    .lg\:text-charcoal-light,
+    .lg\:hover\:text-charcoal-light:hover {
+    color: #686868;
+    }
+
+    .lg\:text-charcoal,
+    .lg\:hover\:text-charcoal:hover {
+    color: #514c4d;
+    }
+
+    .lg\:text-charcoal-dark,
+    .lg\:hover\:text-charcoal-dark:hover {
+    color: #332b2d;
+    }
+
+    .lg\:text-charcoal-darker,
+    .lg\:hover\:text-charcoal-darker:hover {
+    color: #1a1416;
+    }
+
+    .lg\:text-charcoal-darkest,
+    .lg\:hover\:text-charcoal-darkest:hover {
+    color: #0c090a;
+    }
+
+    .lg\:text-gold-lightest,
+    .lg\:hover\:text-gold-lightest:hover {
+    color: #e0e0e0;
+    }
+
+    .lg\:text-gold-lighter,
+    .lg\:hover\:text-gold-lighter:hover {
+    color: #c9c9c9;
+    }
+
+    .lg\:text-gold-light,
+    .lg\:hover\:text-gold-light:hover {
+    color: #b0ada7;
+    }
+
+    .lg\:text-gold,
+    .lg\:hover\:text-gold:hover {
+    color: #989488;
+    }
+
+    .lg\:text-gold-dark,
+    .lg\:hover\:text-gold-dark:hover {
+    color: #7c7664;
+    }
+
+    .lg\:text-gold-darker,
+    .lg\:hover\:text-gold-darker:hover {
+    color: #635a46;
+    }
+
+    .lg\:text-gold-darkest,
+    .lg\:hover\:text-gold-darkest:hover {
+    color: #473e2b;
+    }
+
+    .xl\:text-brick-lightest,
+    .xl\:hover\:text-brick-lightest:hover {
+    color: #dbcdcc;
+    }
+
+    .xl\:text-brick-lighter,
+    .xl\:hover\:text-brick-lighter:hover {
+    color: #c2a3a0;
+    }
+
+    .xl\:text-brick-light,
+    .xl\:hover\:text-brick-light:hover {
+    color: #aa7f7b;
+    }
+        .gradent {
+            background: linear-gradient(90deg, #2C3E50 0%, #4dc0b5 100%);
+        }
+</style>
+    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+        .gradient {
+            background: linear-gradient(90deg, #2C3E50 0%, #4CA1AF 100%);
+        }
+        .back {
+            background: #A8E6CE
+        }
+    </style>
 </head>
-<body>
-        <form action="" method="post">
-            {% csrf_token %}
-            <table>{{ form }}</table>
-            <input type="submit" value="Submit" />
-        </form>
+<body class="bg-gray-200 text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto"
+      style="font-family: 'Roboto Light', sans-serif;">
+<header class="text-white border-b gradient md:flex md:items-center md:justify-between p-6  shadow-lg md:pb-4">
+
+  <!-- Logo text or image -->
+  <div class="flex items-center justify-between mb-4 md:mb-0">
+    <h1 class="leading-none text-2xl text-grey-darkest">
+      <a class="no-underline text-grey-darkest hover:text-white" href="{% url 'home' %}">
+        Chronicle
+      </a>
+    </h1>
+
+    <a class="text-black hover:text-orange md:hidden" href="#">
+      <i class="fa fa-2x fa-bars"></i>
+    </a>
+  </div>
+  <!-- END Logo text or image -->
+
+{#  <!-- Search field -->#}
+{#  <form class="mb-4 w-full md:mb-0 md:w-1/4">#}
+{#    <label class="hidden" for="search-form">Search</label>#}
+{#    <input class="bg-grey-lightest border-2 focus:border-orange p-2 rounded-lg shadow-inner w-full" placeholder="Search" type="text">#}
+{#    <button class="hidden">Submit</button>#}
+{#  </form>#}
+{#  <!-- END Search field -->#}
+
+  <!-- Global navigation -->
+  {% if user.is_authenticated %}
+  <nav>
+    <ul class="list-reset md:flex md:items-center">
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-grey-700 hover:text-black md:border-none md:p-0" href="#">
+        {{ user.name }}
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">
+          {{ user.email }}
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'logout' %}">
+          Log out
+        </a>
+      </li>
+    </ul>
+  </nav>
+    {% else %}
+        <nav>
+    <ul class="list-reset md:flex md:items-center">
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'login' %}">
+            Log In
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'home' %}">
+          Home
+        </a>
+      </li>
+{#      <li class="md:ml-4">#}
+{#        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">#}
+{#          Contact#}
+{#        </a>#}
+{#      </li>#}
+    </ul>
+  </nav>
+    {% endif %}
+  <!-- END Global navigation -->
+
+</header>
+
+
+<main class="flex-1 md:p-0 lg:pt-8 lg:px-8 md:mx-56 flex flex-col">
+  <section class="bg-gray-100 p-4 shadow">
+  <div>
+      <p class="text-center  text-3xl">Article form</p>
+  </div>
+  <form method="post">
+  {% csrf_token %}
+    {% for non_field_error in form.non_field_errors %}
+        <p class="text-xs text-pink-800">{{ non_field_error }}</p>
+    {% endfor %}
+    <div class="md:flex mb-8">
+
+{#      <div class="md:w-1/3">#}
+{#        <legend class="uppercase tracking-wide text-sm">Main </legend>#}
+{#        <p class="text-xs font-light text-red">This entire section is required.</p>#}
+{#      </div>#}
+    <div class="md:flex-1 mt-2 mb:mt-0 md:px-3">
+        {% for field in form %}
+          <div class="mb-4">
+              <label class="block uppercase tracking-wide text font-bold">{{ field.html_name }}</label>
+              {{ field }}
+{#            <input class="w-full shadow-inner p-4 border-0" type="text" name="title" placeholder="Title ">#}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+      <div class="md:flex mb-6 border border-t-1 border-b-0 border-x-0 border-cream-dark">
+        <div class="md:flex-1 px-3 text-center ">
+          <input type="hidden" name="sponsor" value="0">
+          <input class="button gradient text-cream-lighter bg-brick hover:bg-brick-dark" type="submit" value="Submit">
+        </div>
+      </div>
+    </form>
+  </section>
+  </main>
 
 <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
 </body>
+{#<body>#}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{#            <table>{{ form }}</table>#}
+{#            <input type="submit" value="Submit" />#}
+{#        </form>#}
+{##}
+{#<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>#}
+{#<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>#}
+{#<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>#}
+{#<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>#}
+{#<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>#}
+{#</body>#}
 </html>

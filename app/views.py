@@ -52,12 +52,18 @@ def where_next(request):
 
 @user_passes_test(is_author)
 def author_base(request):
-    articles_accepted = Article.objects.filter(state='published').filter(author=request.user)
-    articles_in_queue = Article.objects.filter(state='pending').filter(author=request.user)
-    articles_rejected = Article.objects.filter(state='rejected').filter(author=request.user)
-    return render(request, 'author/author.html', {'article_in_queue': articles_in_queue,
+    articles_accepted = Article.objects.filter(state='Accepted').filter(author=request.user).count()
+    articles_in_queue = Article.objects.filter(state='Under Review').filter(author=request.user).count()
+    articles_rejected = Article.objects.filter(state='Rejected').filter(author=request.user).count()
+    articles_published = Article.objects.filter(state='Published').filter(author=request.user).count()
+    articles = Article.objects.filter(author=request.user)
+    # print(articles_in_queue)
+    return render(request, 'author/author.html', {'articles_in_queue': articles_in_queue,
                                                   'articles_accepted': articles_accepted,
-                                                  'articles_rejected': articles_rejected})
+                                                  'articles_rejected': articles_rejected,
+                                                  'articles_published': articles_published,
+                                                  'articles': articles,
+                                                  })
 
 
 @user_passes_test(is_editor)
@@ -125,6 +131,7 @@ def submit_article(request, journal_id):
         return render(request, 'author/article-form.html', {'form': form})
 
 
+@login_required
 @user_passes_test(is_editor)
 def article_list(request):
     pending_articles = Article.objects.filter(state=STAGE_UNDER_REVIEW)
@@ -138,6 +145,7 @@ def article_list(request):
     return render(request, 'editor/article-list.html', context)
 
 
+@login_required
 @user_passes_test(is_editor)
 def review_pending_article(request, article_id):
     reviewed_article = get_object_or_404(Article, id=article_id)
@@ -160,6 +168,7 @@ def review_pending_article(request, article_id):
                                                               'comments': reviewed_article.Editornotes.all()})
 
 
+@login_required
 @user_passes_test(is_publisher)
 def publisher_article_list(request):
     accepted_articles = Article.objects.filter(state=STAGE_ACCEPTED)

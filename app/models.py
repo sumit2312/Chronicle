@@ -6,7 +6,6 @@ from django.contrib.auth.models import (
 from django.utils import timezone
 from ckeditor.fields import RichTextField
 
-
 class MyUserManager(BaseUserManager):
     def create_user(self, email, password=None):
         """
@@ -139,9 +138,9 @@ class Article(models.Model):
     issue_title = models.CharField(blank=True, max_length=300)
     journal = models.ForeignKey(Journal, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=500)
     author = models.ForeignKey(MyUser, on_delete=models.CASCADE)
-    abstract = models.CharField(max_length=500)
+    abstract = models.TextField()
     text = RichTextField()
     created_at = models.DateTimeField(auto_now_add=True)
     state = models.CharField(max_length=15, choices=STAGE_CHOICES, default=STAGE_UNSUBMITTED)

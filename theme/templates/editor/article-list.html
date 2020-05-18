@@ -1,36 +1,350 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div class="box">
-        <nav class="level">
-            <div class="level-left">
-                <div class="level-item">
-                    <span class="icon has-text-info is-large">
-                        <i class="fas fa-sticky-note"></i>
-                    </span>
-                    {{user.user_type}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}
 
-                </div>
-                <div class="level-item">
-                    <span class="icon has-text-info is-large">
-                        <i class="fas fa-clock"></i>
-                    </span>
-                    {{user.email}}
-                </div>
+    {% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- Font Awesome if you need it  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+{# https://codepen.io/ramene/pen/vYEKrab?__cf_chl_jschl_tk__=1960b16464f898da803ea72147243252022516ee-1589727124-0-ATMfxsD3sXET4mXOkb-6Y8JW3kxoJcD1u8C_V9il2B98h07C0UhcTp77V3R8PQKLVhhuHljqTUHU8UIaWRz3SSzfCFBSRt4WHRBFW_rqJxqkXTZFM3fcbXAy2-74jvytbgb5tWzIzRxflx2a8IG-lVAqEUq-gGqcyhz6LWegvfWel75G0vG-tt1w_tB-zgcwjRr5DuocgSHZUQtZSWTrcMW8-67_tPHLOOM_9VwmbZEsr4_c4gwrrjEAGDmUjHvDhjg9i1QET0AH6QsO-D_o-Dq6h_wso9hjJod6oXgSnrNoJbGf-TAb3nY921fibyYi_3BHgiL0q8dYtO1F-wDOfZph_zVXHMOY0bEJfqO8cpdO #}
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css">
+    <!--Replace with your tailwind.css once created-->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+body {
+	font-family: sans-serif;
+	background: #f6f9fa;
+}
+
+h1 {
+	color: #ccc;
+	text-align: center;
+}
+
+a {
+  color: #ccc;
+  text-decoration: none;
+  outline: none;
+}
+
+/*Fun begins*/
+.tab_container {
+	width: 90%;
+	margin: 0 auto;
+	padding-top: 70px;
+	position: relative;
+}
+
+input, section {
+  clear: both;
+  padding-top: 10px;
+  display: none;
+}
+
+label {
+  font-weight: 700;
+  font-size: 18px;
+  display: block;
+  float: left;
+  width: 20%;
+  padding: 1.5em;
+  color: #757575;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  background: #f0f0f0;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4,
+#tab5:checked ~ #content5 {
+  display: block;
+  padding: 20px;
+  background: #fff;
+  color: #999;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.tab_container .tab-content p,
+.tab_container .tab-content h3 {
+  -webkit-animation: fadeInScale 0.7s ease-in-out;
+  -moz-animation: fadeInScale 0.7s ease-in-out;
+  animation: fadeInScale 0.7s ease-in-out;
+}
+.tab_container .tab-content h3  {
+  text-align: center;
+}
+
+.tab_container [id^="tab"]:checked + label {
+  background: #fff;
+  box-shadow: inset 0 3px #0CE;
+}
+
+.tab_container [id^="tab"]:checked + label .fa {
+  color: #0CE;
+}
+
+label .fa {
+  font-size: 1.3em;
+  margin: 0 0.4em 0 0;
+}
+
+/*Media query*/
+@media only screen and (max-width: 900px) {
+  label span {
+    display: none;
+  }
+
+  .tab_container {
+    width: 98%;
+  }
+}
+
+/*Content Animation*/
+@keyframes fadeInScale {
+  0% {
+  	transform: scale(0.9);
+  	opacity: 0;
+  }
+
+  100% {
+  	transform: scale(1);
+  	opacity: 1;
+  }
+}
+
+.no_wrap {
+  text-align:center;
+  color: #0ce;
+}
+.link {
+  text-align:center;
+}
+    </style>
+</head>
+<body class="bg-gray-100 text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto"
+      style="font-family: 'Roboto', sans-serif;">
+<header class="border-b  md:flex md:items-center md:justify-between p-6 pb-0 shadow-lg md:pb-4">
+
+  <!-- Logo text or image -->
+  <div class="flex items-center justify-between mb-4 md:mb-0">
+    <h1 class="leading-none text-2xl text-grey-darkest">
+      <a class="no-underline text-grey-darkest hover:text-black" href="{% url 'home' %}">
+        Chronicle
+      </a>
+    </h1>
+
+    <a class="text-black hover:text-orange md:hidden" href="#">
+      <i class="fa fa-2x fa-bars"></i>
+    </a>
+  </div>
+  <!-- END Logo text or image -->
+
+{#  <!-- Search field -->#}
+{#  <form class="mb-4 w-full md:mb-0 md:w-1/4">#}
+{#    <label class="hidden" for="search-form">Search</label>#}
+{#    <input class="bg-grey-lightest border-2 focus:border-orange p-2 rounded-lg shadow-inner w-full" placeholder="Search" type="text">#}
+{#    <button class="hidden">Submit</button>#}
+{#  </form>#}
+{#  <!-- END Search field -->#}
+
+  <!-- Global navigation -->
+  {% if user.is_authenticated %}
+  <nav>
+    <ul class="list-reset md:flex md:items-center">
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-grey-700 hover:text-black md:border-none md:p-0" href="#">
+        {{ user.name }}
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">
+          {{ user.email }}
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'logout' %}">
+          Log out
+        </a>
+      </li>
+    </ul>
+  </nav>
+    {% else %}
+        <nav>
+    <ul class="list-reset md:flex md:items-center">
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'login' %}">
+            Log In
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'home' %}">
+          Home
+        </a>
+      </li>
+{#      <li class="md:ml-4">#}
+{#        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">#}
+{#          Contact#}
+{#        </a>#}
+{#      </li>#}
+    </ul>
+  </nav>
+    {% endif %}
+  <!-- END Global navigation -->
+
+</header>
+
+<p class="antialiased text-center mx-16 text-blue-700 text-3xl py-10"> Pending Articles</p>
+
+<main class="py-4 mx-16">
+
+  <div class="px-4">
+    <div class="block md:flex justify-between md:-mx-2">
+        {% for x in pending_articles %}
+      <div class="w-full lg:w-1/3  md:mx-2 mb-4 md:mb-0 ">
+        <div class="bg-white rounded-lg overflow-hidden shadow relative">
+{#          <img class="h-56 w-full object-cover object-center" src="https://images.unsplash.com/photo-1457282367193-e3b79e38f207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80" alt="">#}
+          <div class="p-4 h-auto md:h-40 lg:h-64">
+            <a href="article-list/pending/{{ x.id }}" class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
+              {{ x.title }}
+            </a>
+            <div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
+                {{ x.abstract | truncatewords:20 }}
             </div>
-            <!-- Right side -->
-            <div class="level-right">
-                <div class="level-item">
-                <a href="{% url 'logout' %}"><div class = "button ">LOG OUT</div></a>
-                <div class="level-item">
-                </span>
-                </div>
+            <div class="text-teal-600 py-2 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                <strong>Journal - </strong>{{ x.journal.code }}
             </div>
-        </nav>
+            <div class="text-teal-600 py-1 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                <strong>Created - </strong>{{ x.created_at|timesince }} ago.
+            </div>
+            <div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">
+                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Author - {{ x.author.name}}</a>
+{#                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Volume - {{ x.volume }}</a>#}
+{#                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Issue - {{ x.issue }}</a>#}
+            </div>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+</main>
+
+
+
+<p class="antialiased text-center mx-16 text-green-700 text-3xl"> Accepted Articles for publishing</p>
+
+<main class="py-4 mx-16">
+
+  <div class="px-4">
+    <div class="block md:flex justify-between md:-mx-2">
+        {% for x in accepted_articles %}
+      <div class="w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">
+        <div class="bg-white rounded-lg overflow-hidden shadow relative">
+{#          <img class="h-56 w-full object-cover object-center" src="https://images.unsplash.com/photo-1457282367193-e3b79e38f207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80" alt="">#}
+          <div class="p-4 h-auto md:h-64 lg:h-64">
+            <a href="{{ x.get_absolute_url }}" class="block text-green-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
+              {{ x.title }}
+            </a>
+            <div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
+                {{ x.abstract | truncatewords:20 }}
+            </div>
+
+            <div class="text-teal-600 py-1 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                <strong>Journal - </strong>{{ x.journal.code }}
+            </div>
+            <div class="text-teal-600 py-1 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                <strong>Created - </strong>{{ x.created_at|timesince }} ago.
+            </div>
+
+            <div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">
+                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Author - {{ x.author.name}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+</main>
+
+
+<p class="antialiased text-center mx-16 text-red-700 text-3xl"> Rejected Articles </p>
+
+<main class="py-4 mx-16">
+
+  <div class="px-4">
+    <div class="block md:flex justify-between md:-mx-2">
+        {% for x in rejected_articles %}
+      <div class="w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">
+        <div class="bg-white rounded-lg overflow-hidden shadow relative">
+{#          <img class="h-56 w-full object-cover object-center" src="https://images.unsplash.com/photo-1457282367193-e3b79e38f207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80" alt="">#}
+          <div class="p-4 h-auto md:h-64 lg:h-64">
+            <a href="{{ x.get_absolute_url }}" class="block text-red-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
+              {{ x.title }}
+            </a>
+            <div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
+                {{ x.abstract | truncatewords:20 }}
+            </div>
+            <div class="text-teal-600 py-2 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                <strong>Journal - </strong>{{ x.journal.code }}
+            </div>
+            <div class="text-teal-600 py-1 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                <strong>Created - </strong>{{ x.created_at|timesince }} ago.
+            </div>
+            <div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">
+                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Author - {{ x.author.name}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+</main>
+
+
+{#old#}
+<div class="box p-10">
     </div>
     <strong class="level-item">Pending Article</strong>
     <table class="table">
@@ -95,5 +409,180 @@
         </tbody>
         {% endfor %}
     </table>
+
+
+
+<h1>Responsive CSS Tabs</h1>
+		<div class="tab_container">
+			<input id="tab1" type="radio" name="tabs" checked>
+			<label for="tab1"><i class="fa fa-code"></i><span>Pending</span></label>
+
+			<input id="tab2" type="radio" name="tabs">
+			<label for="tab2"><i class="far fa-check-circle"></i><span>Accepted</span></label>
+
+			<input id="tab3" type="radio" name="tabs">
+			<label for="tab3"><i class="fa fa-bar-chart-o"></i><span>Rejected</span></label>
+
+			<input id="tab4" type="radio" name="tabs">
+			<label for="tab4"><i class="fa fa-folder-open-o"></i><span>Portfolio</span></label>
+
+			<input id="tab5" type="radio" name="tabs">
+			<label for="tab5"><i class="fa fa-envelope-o"></i><span>Contact</span></label>
+
+			<section id="content1" class="tab-content">
+
+                <p class="antialiased text-center mx-16 text-blue-700 text-3xl py-10"> Pending Articles</p>
+
+                <main class="py-4 mx-16">
+
+                  <div class="px-4">
+                    <div class="block md:flex justify-between md:-mx-2">
+                        {% for x in pending_articles %}
+                      <div class="w-full lg:w-1/3  md:mx-2 mb-4 md:mb-0 ">
+                        <div class="bg-white rounded-lg overflow-hidden shadow relative">
+                {#          <img class="h-56 w-full object-cover object-center" src="https://images.unsplash.com/photo-1457282367193-e3b79e38f207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80" alt="">#}
+                          <div class="p-4 h-auto md:h-40 lg:h-64">
+                            <a href="article-list/pending/{{ x.id }}" class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
+                              {{ x.title }}
+                            </a>
+                            <div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
+                                {{ x.abstract | truncatewords:20 }}
+                            </div>
+                            <div class="text-teal-600 py-2 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                                <strong>Journal - </strong>{{ x.journal.code }}
+                            </div>
+                            <div class="text-teal-600 py-1 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                                <strong>Created - </strong>{{ x.created_at|timesince }} ago.
+                            </div>
+                            <div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">
+                                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Author - {{ x.author.name}}</a>
+                {#                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Volume - {{ x.volume }}</a>#}
+                {#                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Issue - {{ x.issue }}</a>#}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+                </main>
+
+
+			</section>
+
+			<section id="content2" class="tab-content">
+
+                <p class="antialiased text-center mx-16 text-green-700 text-3xl"> Accepted Articles for publishing</p>
+
+                <main class="py-4 mx-16">
+
+                  <div class="px-4">
+                    <div class="block md:flex justify-between md:-mx-2">
+                        {% for x in accepted_articles %}
+                      <div class="w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">
+                        <div class="bg-white rounded-lg overflow-hidden shadow relative">
+                {#          <img class="h-56 w-full object-cover object-center" src="https://images.unsplash.com/photo-1457282367193-e3b79e38f207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80" alt="">#}
+                          <div class="p-4 h-auto md:h-64 lg:h-64">
+                            <a href="{{ x.get_absolute_url }}" class="block text-green-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
+                              {{ x.title }}
+                            </a>
+                            <div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
+                                {{ x.abstract | truncatewords:20 }}
+                            </div>
+
+                            <div class="text-teal-600 py-1 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                                <strong>Journal - </strong>{{ x.journal.code }}
+                            </div>
+                            <div class="text-teal-600 py-1 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                                <strong>Created - </strong>{{ x.created_at|timesince }} ago.
+                            </div>
+
+                            <div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">
+                                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Author - {{ x.author.name}}</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+                </main>
+
+			</section>
+
+			<section id="content3" class="tab-content">
+				<p class="antialiased text-center mx-16 text-red-700 text-3xl"> Rejected Articles </p>
+
+                <main class="py-4 mx-16">
+
+                  <div class="px-4">
+                    <div class="block md:flex justify-between md:-mx-2">
+                        {% for x in rejected_articles %}
+                      <div class="w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">
+                        <div class="bg-white rounded-lg overflow-hidden shadow relative">
+                {#          <img class="h-56 w-full object-cover object-center" src="https://images.unsplash.com/photo-1457282367193-e3b79e38f207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80" alt="">#}
+                          <div class="p-4 h-auto md:h-64 lg:h-64">
+                            <a href="{{ x.get_absolute_url }}" class="block text-red-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
+                              {{ x.title }}
+                            </a>
+                            <div class="text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm">
+                                {{ x.abstract | truncatewords:20 }}
+                            </div>
+                            <div class="text-teal-600 py-2 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                                <strong>Journal - </strong>{{ x.journal.code }}
+                            </div>
+                            <div class="text-teal-600 py-1 text-lg leading-relaxed block md:text-xs lg:text-sm">
+                                <strong>Created - </strong>{{ x.created_at|timesince }} ago.
+                            </div>
+                            <div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">
+                                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Author - {{ x.author.name}}</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+                </main>
+
+			</section>
+
+			<section id="content4" class="tab-content">
+				<h3>Headline 4</h3>
+		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		      	tempor incididunt ut labore et dolore magna aliqua.</p>
+		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		      	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		      	cillum dolore eu fugiat nulla pariatur.</p>
+		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		      	consequat.</p>
+			</section>
+
+			<section id="content5" class="tab-content">
+				<h3>Headline 5</h3>
+		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		      	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		      	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		      	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</section>
+		</div>
+
+<p class="no_wrap">
+  And Of-course this paragrapgh with not wrap Tab
+</p>
+
+<p class="link">
+  Just in case you want to go through the tutorial follow this link: <a href="http://www.sevensignature.com/blog/code/responsive-pure-css-tabs/">Responsive Pure CSS Tabs</a>
+</p>
+
 </body>
 </html>

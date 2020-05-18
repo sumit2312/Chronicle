@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}
-
+     {{ journal.code }}
     {% endblock %}</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -21,12 +21,6 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
-    <style>
-        .gradient {
-            background: linear-gradient(90deg, #3b9e95 0%, #4dc0b5 100%);
-        }
-
-    </style>
     <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
@@ -35,80 +29,104 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY=" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        .gradient {
+            {#background: linear-gradient(90deg, #000428 0%, #004e92 100%);#}
+            background: linear-gradient(90deg, #141e30 0%, #243b55 100%);
+        }
+        .gradient1 {
+            background: linear-gradient(90deg, #780206 0%, #061161 100%);
+        }
+        .gradient2 {
+            background: linear-gradient(#a1c4fd 0%, #c2e9fb 100%);
+        }
+        .gradient3 {
+            background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
 
+        @media (min-width: 1024px) {
+          .top-navbar {
+            display: inline-flex !important;
+          }
+        }
+
+    </style>
 </head>
 <body class="leading-normal tracking-normal text-gray-800 antialiased bg-gray-100" style="font-family: 'Roboto', sans-serif;">
-<header class="border-b md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4">
 
-  <!-- Logo text or image -->
-  <div class="flex items-center justify-between mb-4 md:mb-0">
-    <h1 class="leading-none text-2xl text-grey-darkest">
-      <a class="no-underline text-grey-darkest hover:text-black" href="{% url 'home' %}">
-        Chronicle
+<nav class="gradient flex items-center bg-gray-800 p-3 flex-wrap">
+      <a href="#" class="p-2 mr-4 inline-flex items-center">
+        <svg
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          class="fill-current text-white h-8 w-8 mr-2"
+        >
+          <path
+            d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"
+          />
+        </svg>
+        <span class="text-xl text-white font-bold uppercase tracking-wide"
+          >Chronicle</span
+        >
       </a>
-    </h1>
-
-    <a class="text-black hover:text-orange md:hidden" href="#">
-      <i class="fa fa-2x fa-bars"></i>
-    </a>
-  </div>
-  <!-- END Logo text or image -->
-
-  <!-- Search field -->
-  <form class="mb-4 w-full md:mb-0 md:w-1/4">
-    <label class="hidden" for="search-form">Search</label>
-    <input class="bg-grey-lightest border-2 focus:border-orange p-2 rounded-lg shadow-inner w-full" placeholder="Search" type="text">
-    <button class="hidden">Submit</button>
-  </form>
-  <!-- END Search field -->
-
-  <!-- Global navigation -->
-  {% if user.is_authenticated %}
-  <nav>
-    <ul class="list-reset md:flex md:items-center">
-      <li class="md:ml-4">
-        <a class="block no-underline hover:underline py-2 text-grey-700 hover:text-black md:border-none md:p-0" href="#">
-        {{ user.name }}
-        </a>
-      </li>
-      <li class="md:ml-4">
-        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'home' %}">
-          Home
-        </a>
-      </li>
-      <li class="md:ml-4">
-        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'logout' %}">
-          Log out
-        </a>
-      </li>
-    </ul>
-  </nav>
-    {% else %}
-        <nav>
-    <ul class="list-reset md:flex md:items-center">
-      <li class="md:ml-4">
-        <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'login' %}">
-            Log In
-        </a>
-      </li>
-      <li class="md:ml-4">
-        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'home' %}">
-          Home
-        </a>
-      </li>
-{#      <li class="md:ml-4">#}
-{#        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">#}
-{#          Contact#}
-{#        </a>#}
-{#      </li>#}
-    </ul>
-  </nav>
-    {% endif %}
-  <!-- END Global navigation -->
-
-</header>
-
-
+      <button
+        class="text-white inline-flex p-3 hover:bg-gray-900 rounded lg:hidden ml-auto hover:text-white outline-none nav-toggler"
+        data-target="#navigation"
+      >
+        <i class="material-icons">menu</i>
+      </button>
+      <div
+        class="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
+        id="navigation"
+      >
+        <div
+          class="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto"
+        >
+          <a
+            href="{% url 'home' %}"
+            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
+          >
+            <span>Home</span>
+          </a>
+          {% if user.is_authenticated %}
+          <a
+            href="{% url 'logout' %}"
+            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
+          >
+            <span>Logout</span>
+          </a>
+            {% else %}
+          <a
+            href="{% url 'login' %}"
+            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
+          >
+            <span>LogIn</span>
+          </a>
+          {% endif %}
+{#          <a#}
+{#            href="#"#}
+{#            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"#}
+{#          >#}
+{#            <span>Gallery</span>#}
+{#          </a>#}
+{#          <a#}
+{#            href="#"#}
+{#            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"#}
+{#          >#}
+{#            <span>Products</span>#}
+{#          </a>#}
+{#          <a#}
+{#            href="#"#}
+{#            class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"#}
+{#          >#}
+{#            <span>Contact Us</span>#}
+{#          </a>#}
+        </div>
+      </div>
+    </nav>
+{# END NAV   #}
     <div class="container mx-auto p-8">
 
         <div class="bg-white p-10 shadow-md rounded-lg overflow-hidden lg:flex">
@@ -117,7 +135,7 @@
                 <p class="text-gray-800 mb-4">{{ journal.subject }}</p>
                 <p class="mb-4">{{ journal.description }}</p>
 {#                {% if user.is_authenticated and user.is_author %}#}
-                    <a href="{{ journal.id }}/submit-article" class="inline-block px-3 py-2 mt-5 bg-teal-500 text-white rounded shadow">Submit an article</a>
+                    <a href="{{ journal.id }}/submit-article" class="gradient inline-block px-3 py-2 mt-5 bg-teal-500 text-white rounded shadow">Submit an article</a>
 {#                {% endif %}#}
             </div>
             <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
@@ -136,7 +154,7 @@
     <div class="block md:flex justify-between md:-mx-2">
         {% for x in articles %}
       <div class="w-full lg:w-1/3 md:mx-2 mb-4 md:mb-0">
-        <div class="bg-white rounded-lg overflow-hidden shadow relative">
+        <div class="bg-white gradient2 rounded-lg overflow-hidden shadow-lg  relative">
 {#          <img class="h-56 w-full object-cover object-center" src="https://images.unsplash.com/photo-1457282367193-e3b79e38f207?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1654&q=80" alt="">#}
           <div class="p-4 h-auto md:h-40 lg:h-48">
             <a href="{{ x.get_absolute_url }}" class="block text-blue-500 hover:text-blue-600 font-semibold mb-2 text-lg md:text-base lg:text-lg">
@@ -147,9 +165,9 @@
             </div>
 
             <div class="relative mt-2 lg:absolute bottom-0 mb-4 md:hidden lg:block">
-                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Author - {{ x.author.name}}</a>
-                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Volume - {{ x.volume }}</a>
-                <a class="inline bg-gray-300 py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Issue - {{ x.issue }}</a>
+                <a class="inline bg-white py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Author - {{ x.author.name}}</a>
+                <a class="inline bg-white py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Volume - {{ x.volume }}</a>
+                <a class="inline bg-white py-1 px-2 rounded-full text-xs  text-gray-700" href="#">Issue - {{ x.issue }}</a>
             </div>
           </div>
         </div>
@@ -194,6 +212,21 @@
   </div>
 </main>
 
+<footer class="my-20 p-24"></footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function() {
+  $(".nav-toggler").each(function(_, navToggler) {
+    var target = $(navToggler).data("target");
+    $(navToggler).on("click", function() {
+      $(target).animate({
+        height: "toggle"
+      });
+    });
+  });
+});
+
+</script>
 </body>
 </html>

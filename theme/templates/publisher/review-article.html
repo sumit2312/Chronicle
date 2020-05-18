@@ -1,45 +1,219 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {#  Section    #}
-    <form action="" method="post">{% csrf_token %}
-        <table>
-            <tr>
-            <td>
-            <b>Proposed Article:</b>
-            </td>
-            <td>
-            <b>{{ article.title }}</b>
-            </td>
-            </tr>
-            <tr>
-            <td>
-            <b>Author:</b>
-            </td>
-            <td>
-            <b>{{ article.author.email }}</b>
-            </td>
-            </tr>
-            <tr>
-            <td>
-            <b>Abstract:</b>
-            </td>
-            <td>
-            <b>{{ article.abstract }}</b>
-            </td>
-            </tr>
-            {{ form.as_table }}
-        </table>
-        <input type="submit" value="Submit" />
-    </form>
-    {# END  Section    #}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}
 
+    {% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- Font Awesome if you need it  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+{# https://codepen.io/ramene/pen/vYEKrab?__cf_chl_jschl_tk__=1960b16464f898da803ea72147243252022516ee-1589727124-0-ATMfxsD3sXET4mXOkb-6Y8JW3kxoJcD1u8C_V9il2B98h07C0UhcTp77V3R8PQKLVhhuHljqTUHU8UIaWRz3SSzfCFBSRt4WHRBFW_rqJxqkXTZFM3fcbXAy2-74jvytbgb5tWzIzRxflx2a8IG-lVAqEUq-gGqcyhz6LWegvfWel75G0vG-tt1w_tB-zgcwjRr5DuocgSHZUQtZSWTrcMW8-67_tPHLOOM_9VwmbZEsr4_c4gwrrjEAGDmUjHvDhjg9i1QET0AH6QsO-D_o-Dq6h_wso9hjJod6oXgSnrNoJbGf-TAb3nY921fibyYi_3BHgiL0q8dYtO1F-wDOfZph_zVXHMOY0bEJfqO8cpdO #}
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css">
+    <!--Replace with your tailwind.css once created-->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+        .gradient {
+            background: linear-gradient(#a1c4fd 0%, #c2e9fb 100%);
+        }
+        .gradient1 {
+            background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto">
+<header class="border-b  md:flex md:items-center md:justify-between p-6 pb-0 shadow-lg md:pb-4">
+
+  <!-- Logo text or image -->
+  <div class="flex items-center justify-between mb-4 md:mb-0">
+    <h1 class="leading-none text-2xl text-grey-darkest">
+      <a class="no-underline text-grey-darkest hover:text-black" href="{% url 'home' %}">
+        Chronicle
+      </a>
+    </h1>
+
+    <a class="text-black hover:text-orange md:hidden" href="#">
+      <i class="fa fa-2x fa-bars"></i>
+    </a>
+  </div>
+  <!-- END Logo text or image -->
+
+{#  <!-- Search field -->#}
+{#  <form class="mb-4 w-full md:mb-0 md:w-1/4">#}
+{#    <label class="hidden" for="search-form">Search</label>#}
+{#    <input class="bg-grey-lightest border-2 focus:border-orange p-2 rounded-lg shadow-inner w-full" placeholder="Search" type="text">#}
+{#    <button class="hidden">Submit</button>#}
+{#  </form>#}
+{#  <!-- END Search field -->#}
+
+  <!-- Global navigation -->
+  {% if user.is_authenticated %}
+  <nav>
+    <ul class="list-reset md:flex md:items-center">
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-grey-700 hover:text-black md:border-none md:p-0" href="#">
+        {{ user.name }}
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">
+          {{ user.email }}
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'logout' %}">
+          Log out
+        </a>
+      </li>
+    </ul>
+  </nav>
+    {% else %}
+        <nav>
+    <ul class="list-reset md:flex md:items-center">
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'login' %}">
+            Log In
+        </a>
+      </li>
+      <li class="md:ml-4">
+        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="{% url 'home' %}">
+          Home
+        </a>
+      </li>
+{#      <li class="md:ml-4">#}
+{#        <a class="border-t block no-underline hover:underline py-2 text-grey-darkest hover:text-black md:border-none md:p-0" href="#">#}
+{#          Contact#}
+{#        </a>#}
+{#      </li>#}
+    </ul>
+  </nav>
+    {% endif %}
+  <!-- END Global navigation -->
+
+</header>
+{# MAIN DETAILS#}
+<div class="gradient container mx-auto my-10 bg-white p-5 shadow-xl rounded-lg overflow-hidden ">
+    <div class="text-center">
+        <h3 class="mb-2 text-base text-teal-700 text-3xl hover:text-gray-700">{{ article.title }}</h3>
+        <p class="text-left text-teal-700 text-xl"><strong>Abstract</strong></p>
+        <p class="text-grey-600 text text-left">{{ article.abstract }}</p>
+    </div>
+​   <div class="mt-4 text-teal-500">
+        <strong>Journal - </strong>{{ article.journal }}
+    </div>
+    <div class="mt-4">
+        {% if keywords.all %}
+            <p class="inline p-2 text-teal-500"><strong>Keywords</strong> - </p>
+        {% endif %}
+        {% for key in keywords.all %}
+            <a class="inline bg-teal-500 py-1 px-4 mx-1  rounded-full  text-white" href="#">{{ key }}</a>
+        {% endfor %}
+    </div>
+    <div class="mt-4 text-white-500">
+        <strong>Author - </strong>{{ article.author.name }}
+        <p>Email - {{ article.author.email }}</p>
+    </div>
+    <div class="mt-4 text-teal-500">
+        <form>
+
+        </form>
+    </div>
+</div>
+
+<main class=" flex-1 md:p-0 lg:pt-8 lg:px-16 md:mx-24 mx-56 flex flex-col">
+  <section class="rounded-lg bg-white p-4 shadow">
+  <div class="md:flex">
+    <h2 class="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6">Review Article</h2>
+  </div>
+  <form method="post">
+  {% csrf_token %}
+    {% for non_field_error in form.non_field_errors %}
+        <p class="text-xs text-pink-800">{{ non_field_error }}</p>
+    {% endfor %}
+    <div class="md:flex mb-8">
+
+{#      <div class="md:w-1/3">#}
+{#        <legend class="uppercase tracking-wide text-sm">Main </legend>#}
+{#        <p class="text-xs font-light text-red">This entire section is required.</p>#}
+{#      </div>#}
+    <div class="md:flex-1 mt-2 mb:mt-0 md:px-3">
+        {% for field in form %}
+          <div class="mb-4">
+              <label class="block uppercase tracking-wide text font-bold">{{ field.html_name }}</label>
+              {{ field }}
+{#            <input class="w-full shadow-inner p-4 border-0" type="text" name="title" placeholder="Title ">#}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <button class="block bg-teal-400 hover:bg-teal-dark text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Submit</button>
+    </form>
+  </section>
+  </main>
 <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 </body>
+<footer class="p-10"></footer>
 </html>
+
+{##}
+{#{% load static %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+    {#  Section    #}
+{#    <form action="" method="post">{% csrf_token %}#}
+{#        <table>#}
+{#            <tr>#}
+{#            <td>#}
+{#            <b>Proposed Article:</b>#}
+{#            </td>#}
+{#            <td>#}
+{#            <b>{{ article.title }}</b>#}
+{#            </td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#            <td>#}
+{#            <b>Author:</b>#}
+{#            </td>#}
+{#            <td>#}
+{#            <b>{{ article.author.email }}</b>#}
+{#            </td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#            <td>#}
+{#            <b>Abstract:</b>#}
+{#            </td>#}
+{#            <td>#}
+{#            <b>{{ article.abstract }}</b>#}
+{#            </td>#}
+{#            </tr>#}
+{#            {{ form.as_table }}#}
+{#        </table>#}
+{#        <input type="submit" value="Submit" />#}
+{#    </form>#}
+    {# END  Section    #}
+{##}
+{#<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>#}
+{#<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>#}
+{#</body>#}
+{#</html>#}
