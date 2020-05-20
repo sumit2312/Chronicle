@@ -58,22 +58,75 @@ def author_base(request):
     articles_published = Article.objects.filter(state='Published').filter(author=request.user).count()
     articles = Article.objects.filter(author=request.user)
     # print(articles_in_queue)
-    return render(request, 'author/author.html', {'articles_in_queue': articles_in_queue,
-                                                  'articles_accepted': articles_accepted,
-                                                  'articles_rejected': articles_rejected,
-                                                  'articles_published': articles_published,
-                                                  'articles': articles,
-                                                  })
+    labels = ["Articles In Peer Review","Articles Acepted","Articles Published","Articles Rejected"]
+    data = []
+    # labels.append
+    data.append(articles_in_queue)
+    data.append(articles_accepted)
+    data.append(articles_published)
+    data.append(articles_rejected)
+    context = {
+        'articles_in_queue': articles_in_queue,
+        'articles_accepted': articles_accepted,
+        'articles_rejected': articles_rejected,
+        'articles_published': articles_published,
+        'articles': articles,
+        'labels': labels,
+        'data': data,
+    }
+    return render(request, 'author/author.html', context)
 
 
 @user_passes_test(is_editor)
 def editor_base(request):
-    return render(request, 'editor/editor.html')
+    articles_accepted = Article.objects.filter(state='Accepted').count()
+    articles_in_queue = Article.objects.filter(state='Under Review').count()
+    articles_rejected = Article.objects.filter(state='Rejected').count()
+    articles_published = Article.objects.filter(state='Published').count()
+    articles = Article.objects.filter(author=request.user)
+    # print(articles_in_queue)
+    labels = ["Articles In Peer Review","Articles Acepted","Articles Published","Articles Rejected"]
+    data = []
+    # labels.append
+    data.append(articles_in_queue)
+    data.append(articles_accepted)
+    data.append(articles_published)
+    data.append(articles_rejected)
+    context = {
+        'articles_in_queue': articles_in_queue,
+        'articles_accepted': articles_accepted,
+        'articles_rejected': articles_rejected,
+        'articles_published': articles_published,
+        'articles': articles,
+        'labels': labels,
+        'data': data,
+    }
+    return render(request, 'editor/editor.html', context)
 
 
 @user_passes_test(is_publisher)
 def publisher_base(request):
-    return render(request, 'publisher/publisher.html')
+    authors = MyUser.objects.filter(user_type='AUTHOR').count()
+    editors = MyUser.objects.filter(user_type='EDITOR').count()
+    articles_published = Article.objects.filter(state='Published').count()
+    articles_accepted = Article.objects.filter(state='Accepted').count()
+    # print(authors,editors)
+    labels = ["Articles Published","Articles Acepted"]
+    data = []
+    # labels.append
+    data.append(articles_published)
+    data.append(articles_accepted)
+    context = {
+        'authors': authors,
+        'editors': editors,
+        'articles_published': articles_published,
+        'articles_accepted': articles_accepted,
+        'labels': labels,
+        'data': data,
+    }
+    # print(labels)
+    # print(data)
+    return render(request, 'publisher/publisher.html',context)
 
 
 def journal_list(request):
@@ -165,7 +218,7 @@ def review_pending_article(request, article_id):
     else:
         form = ReviewForm()
         return render(request, 'editor/review-article.html', {'form': form, 'article': reviewed_article,
-                                                              'comments': reviewed_article.Editornotes.all()})
+                                                                'comments': reviewed_article.Editornotes.all()})
 
 
 @login_required

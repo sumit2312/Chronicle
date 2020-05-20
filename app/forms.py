@@ -69,6 +69,7 @@ class ArticleForm(forms.ModelForm):
                 'class': 'w-full shadow-inner p-4 border-2'}),
             'abstract': forms.Textarea(attrs={
                 'class': 'w-full shadow-inner p-4 border-2'}),
+            'keywords': forms.CheckboxSelectMultiple,
         }
 
 

@@ -1,0 +1,12 @@
+asgiref==3.2.7
+certifi==2020.4.5.1
+Django==3.0.3
+django-ckeditor==5.9.0
+django-js-asset==1.2.2
+django-modeltranslation==0.15
+django-tailwind==0.7.1
+mysqlclient==1.4.6
+Pillow==7.1.2
+pytz==2020.1
+six==1.14.0
+sqlparse==0.3.1

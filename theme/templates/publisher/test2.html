@@ -14,7 +14,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
     />
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link
       rel="stylesheet"
       href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
@@ -23,13 +22,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
     />
-    <title>Dashboard | {{ user.name }}</title>
+    <title>Dashboard | Tailwind Starter Kit by Creative Tim</title>
   </head>
   <body class="text-gray-800 antialiased">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
       <nav
-        class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6 "
+        class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6"
       >
         <div
           class="md:flex-col md:items-stretch md:min-h-full md:flex-no-wrap px-0 flex flex-wrap items-center justify-between w-full mx-auto"
@@ -43,15 +42,15 @@
           >
           <a
             class="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
-            href="{% url 'home' %}"
+            href="javascript:void(0)"
           >
-            Chronicle
+            Tailwind Starter Kit
           </a>
           <ul class="md:hidden items-center flex flex-wrap list-none">
             <li class="inline-block relative">
               <a
                 class="text-gray-600 block py-1 px-3"
-                href=""
+                href="#pablo"
                 onclick="openDropdown(event,'notification-dropdown')"
                 ><i class="fas fa-bell"></i
               ></a>
@@ -130,7 +129,14 @@
               class="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-gray-300"
             >
               <div class="flex flex-wrap">
-
+                <div class="w-6/12">
+                  <a
+                    class="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
+                    href="javascript:void(0)"
+                  >
+                    Tailwind Starter Kit
+                  </a>
+                </div>
                 <div class="w-6/12 flex justify-end">
                   <button
                     type="button"
@@ -163,94 +169,110 @@
               <li class="items-center">
                 <a
                   class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
-                  href="{% url 'home' %}"
+                  href="#/landing"
                   ><i class="fas fa-newspaper text-gray-500 mr-2 text-sm"></i>
-                  Home Page</a
+                  Landing Page</a
                 >
               </li>
               <li class="items-center">
                 <a
                   class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
-                  href="journal"
+                  href="#/profile"
                   ><i class="fas fa-user-circle text-gray-500 mr-2 text-sm"></i>
-                  Journals</a
+                  Profile Page</a
                 >
               </li>
               <li class="items-center">
                 <a
                   class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
-                  href="{% url 'logout' %}"
+                  href="#/login"
                   ><i class="fas fa-fingerprint text-gray-500 mr-2 text-sm"></i>
-                  Logout</a
+                  Login</a
                 >
               </li>
-
-
+              <li class="items-center">
+                <a
+                  class="text-gray-400 text-xs uppercase py-3 font-bold block"
+                  href="#pablo"
+                  ><i
+                    class="fas fa-clipboard-list text-gray-400 mr-2 text-sm"
+                  ></i>
+                  Register (soon)</a
+                >
+              </li>
+              <li class="items-center">
+                <a
+                  class="text-gray-400 text-xs uppercase py-3 font-bold block"
+                  href="#pablo"
+                  ><i class="fas fa-tools text-gray-400 mr-2 text-sm"></i>
+                  Settings (soon)</a
+                >
+              </li>
             </ul>
             <hr class="my-4 md:min-w-full" />
-{#            <h6#}
-{#              class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"#}
-{#            >#}
-{#              Documentation#}
-{#            </h6>#}
-{#            <ul#}
-{#              class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4"#}
-{#            >#}
-{#              <li class="inline-flex">#}
-{#                <a#}
-{#                  class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"#}
-{#                  href="#/documentation/styles"#}
-{#                  ><i#}
-{#                    class="fas fa-paint-brush mr-2 text-gray-500 text-base"#}
-{#                  ></i>#}
-{#                  Styles</a#}
-{#                >#}
-{#              </li>#}
-{#              <li class="inline-flex">#}
-{#                <a#}
-{#                  class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"#}
-{#                  href="#/documentation/alerts"#}
-{#                  ><i class="fab fa-css3-alt mr-2 text-gray-500 text-base"></i>#}
-{#                  CSS Components</a#}
-{#                >#}
-{#              </li>#}
-{#              <li class="inline-flex">#}
-{#                <a#}
-{#                  class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"#}
-{#                  href="#/documentation/vue/alerts"#}
-{#                  ><i class="fab fa-vuejs mr-2 text-gray-500 text-base"></i>#}
-{#                  VueJS</a#}
-{#                >#}
-{#              </li>#}
-{#              <li class="inline-flex">#}
-{#                <a#}
-{#                  class="text-gray-800 hover:text-gray-600  text-sm block mb-4 no-underline font-semibold"#}
-{#                  href="#/documentation/react/alerts"#}
-{#                  ><i class="fab fa-react mr-2 text-gray-500 text-base"></i>#}
-{#                  React</a#}
-{#                >#}
-{#              </li>#}
-{#              <li class="inline-flex">#}
-{#                <a#}
-{#                  class="text-gray-800 hover:text-gray-600  text-sm block mb-4 no-underline font-semibold"#}
-{#                  href="#/documentation/angular/alerts"#}
-{#                  ><i class="fab fa-angular mr-2 text-gray-500 text-base"></i>#}
-{#                  Angular</a#}
-{#                >#}
-{#              </li>#}
-{#              <li class="inline-flex">#}
-{#                <a#}
-{#                  class="text-gray-800 hover:text-gray-600  text-sm block mb-4 no-underline font-semibold"#}
-{#                  href="#/documentation/javascript/alerts"#}
-{#                  ><i class="fab fa-js-square mr-2 text-gray-500 text-base"></i>#}
-{#                  Javascript</a#}
-{#                >#}
-{#              </li>#}
-{#            </ul>#}
+            <h6
+              class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+            >
+              Documentation
+            </h6>
+            <ul
+              class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4"
+            >
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/styles"
+                  ><i
+                    class="fas fa-paint-brush mr-2 text-gray-500 text-base"
+                  ></i>
+                  Styles</a
+                >
+              </li>
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/alerts"
+                  ><i class="fab fa-css3-alt mr-2 text-gray-500 text-base"></i>
+                  CSS Components</a
+                >
+              </li>
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/vue/alerts"
+                  ><i class="fab fa-vuejs mr-2 text-gray-500 text-base"></i>
+                  VueJS</a
+                >
+              </li>
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600  text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/react/alerts"
+                  ><i class="fab fa-react mr-2 text-gray-500 text-base"></i>
+                  React</a
+                >
+              </li>
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600  text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/angular/alerts"
+                  ><i class="fab fa-angular mr-2 text-gray-500 text-base"></i>
+                  Angular</a
+                >
+              </li>
+              <li class="inline-flex">
+                <a
+                  class="text-gray-800 hover:text-gray-600  text-sm block mb-4 no-underline font-semibold"
+                  href="#/documentation/javascript/alerts"
+                  ><i class="fab fa-js-square mr-2 text-gray-500 text-base"></i>
+                  Javascript</a
+                >
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
-      <div class="relative  md:ml-64 bg-gray-100">
+      <div class="relative md:ml-64 bg-gray-100">
         <nav
           class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-no-wrap md:justify-start flex items-center p-4"
         >
@@ -258,15 +280,72 @@
             class="w-full mx-autp items-center flex justify-between md:flex-no-wrap flex-wrap md:px-10 px-4"
           >
             <a
-              class="text-gray-700 text-xl uppercase hidden lg:inline-block font-semibold"
+              class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
               href="./index.html"
-              > Author Dashboard</a
+              >Dashboard</a
             >
-{#            <p class="text-white">User - {{ user.name }}</p>#}
+            <form
+              class="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3"
+            >
+              <div class="relative flex w-full flex-wrap items-stretch">
+                <span
+                  class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3"
+                  ><i class="fas fa-search"></i
+                ></span>
+                <input
+                  type="text"
+                  placeholder="Search here..."
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full pl-10"
+                />
+              </div>
+            </form>
+            <ul
+              class="flex-col md:flex-row list-none items-center hidden md:flex"
+            >
+              <a class="text-gray-600 block" href="#pablo" onclick="openDropdown(event,'user-dropdown')">
+                <div class="items-center flex">
+                  <span
+                    class="w-12 h-12 text-sm text-white bg-gray-300 inline-flex items-center justify-center rounded-full"
+                    ><img
+                      alt="..."
+                      class="w-full rounded-full align-middle border-none shadow-lg"
+                      src="./assets/img/team-1-800x800.jpg"
+                  /></span>
+                </div>
+              </a>
+              <div
+                class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
+                style="min-width: 12rem;"
+                id="user-dropdown"
+              >
+                <a
+                  href="#pablo"
+                  class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
+                  >Action</a
+                ><a
+                  href="#pablo"
+                  class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
+                  >Another action</a
+                ><a
+                  href="#pablo"
+                  class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
+                  >Something else here</a
+                >
+                <div class="h-0 my-2 border border-solid border-gray-200"></div>
+                <a
+                  href="#pablo"
+                  class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
+                  >Seprated link</a
+                >
+              </div>
+            </ul>
           </div>
         </nav>
+        <div id="container" style="width: 75%;">
+          <canvas id="pie-chart"></canvas>
+        </div>
         <!-- Header -->
-        <div class="relative  md:pt-32 pb-32 pt-12">
+        <div class="relative bg-pink-600 md:pt-32 pb-32 pt-12">
           <div class="px-4 md:px-10 mx-auto w-full">
             <div>
               <!-- Card stats -->
@@ -277,10 +356,10 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Articles in Peer Review
+                            Traffic
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
-                            {{ articles_in_queue }}
+                            350,897
                           </span>
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
@@ -291,10 +370,10 @@
                       </div>
                         <p class="text-sm text-gray-500 mt-4">
                         <span class="text-green-500 mr-2">
-{#                          <i class="fas fa-arrow-up"></i> #}
+                          <i class="fas fa-arrow-up"></i> 3.48%
                         </span>
                         <span class="whitespace-no-wrap">
-{#                          Since last month#}
+                          Since last month
                         </span>
                       </p>
                     </div>
@@ -306,10 +385,10 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Articles Accepted
+                            New users
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
-                            {{ articles_accepted }}
+                            2,356
                           </span>
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
@@ -320,10 +399,10 @@
                       </div>
                       <p class="text-sm text-gray-500 mt-4">
                         <span class="text-red-500 mr-2">
-{#                          <i class="fas fa-arrow-down"></i> 3.48%#}
+                          <i class="fas fa-arrow-down"></i> 3.48%
                         </span>
                         <span class="whitespace-no-wrap">
-{#                          Since last week#}
+                          Since last week
                         </span>
                       </p>
                     </div>
@@ -335,10 +414,10 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Articles Published
+                            Sales
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
-                            {{ articles_published }}
+                            924
                           </span>
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
@@ -349,10 +428,10 @@
                       </div>
                       <p class="text-sm text-gray-500 mt-4">
                         <span class="text-orange-500 mr-2">
-{#                          <i class="fas fa-arrow-down"></i> 1.10%#}
+                          <i class="fas fa-arrow-down"></i> 1.10%
                         </span>
                         <span class="whitespace-no-wrap">
-{#                          Since yesterday#}
+                          Since yesterday
                         </span>
                       </p>
                     </div>
@@ -364,10 +443,10 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Articles Rejected
+                            Performance
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
-                            {{ articles_rejected }}
+                            49,65%
                           </span>
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
@@ -378,10 +457,10 @@
                       </div>
                       <p class="text-sm text-gray-500 mt-4">
                         <span class="text-green-500 mr-2">
-{#                          <i class="fas fa-arrow-up"></i> 12%#}
+                          <i class="fas fa-arrow-up"></i> 12%
                         </span>
                         <span class="whitespace-no-wrap">
-{#                          Since last month#}
+                          Since last month
                         </span>
                       </p>
                     </div>
@@ -395,29 +474,26 @@
           <div class="flex flex-wrap">
             <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
               <div
-                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
+                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-900"
               >
                 <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
                   <div class="flex flex-wrap items-center">
                     <div class="relative w-full max-w-full flex-grow flex-1">
                       <h6
-                        class="uppercase text-gray-600 mb-1 text-xs font-semibold"
+                        class="uppercase text-gray-200 mb-1 text-xs font-semibold"
                       >
                         Overview
                       </h6>
-                      <h2 class="text-black text-xl font-semibold">
-                        Articles
+                      <h2 class="text-white text-xl font-semibold">
+                        Sales value
                       </h2>
                     </div>
                   </div>
                 </div>
                 <div class="p-4 flex-auto">
                   <!-- Chart -->
-                  {% comment %} <div id="container" style="width: 75%;">
-                    <canvas id="pie-chart"></canvas>
-                  </div> {% endcomment %}
-                  <div class="relative" style="height:350px; width: 80%;">
-                    <canvas id="pie-chart"></canvas>
+                  <div class="relative" style="height:350px">
+                    <canvas id="line-chart"></canvas>
                   </div>
                 </div>
               </div>
@@ -432,10 +508,10 @@
                       <h6
                         class="uppercase text-gray-500 mb-1 text-xs font-semibold"
                       >
-                        {% comment %} Performance {% endcomment %}
+                        Performance
                       </h6>
                       <h2 class="text-gray-800 text-xl font-semibold">
-                        {% comment %} Total orders {% endcomment %}
+                        Total orders
                       </h2>
                     </div>
                   </div>
@@ -450,23 +526,23 @@
             </div>
           </div>
           <div class="flex flex-wrap mt-4">
-            <div class="w-full  mb-12 xl:mb-0 px-4">
+            <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
               <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                   <div class="flex flex-wrap items-center">
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                       <h3 class="font-semibold text-base text-gray-800">
-                        Articles
+                        Page visits
                       </h3>
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-{#                      <button#}
-{#                        class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"#}
-{#                        type="button"#}
-{#                        style="transition:all .15s ease"#}
-{#                      >#}
-{#                        See all#}
-{#                      </button>#}
+                      <button
+                        class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                        style="transition:all .15s ease"
+                      >
+                        See all
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -476,47 +552,302 @@
                     <thead>
                       <tr>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Article
+                          Page name
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Journal
+                          Visitors
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                          State
+                          Unique users
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Time
+                          Bounce rate
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                    {% for article in articles %}
                       <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4 text-left">
-                          {{ article.title }}
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                          /argon/
                         </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
-                          {{ article.journal }}
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          4,569
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
-                          {{ article.state }}
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          340
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
-                          <i class="fas fa-clock text-green-500 mr-4"></i>
-                          {{ article.date }}
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <i class="fas fa-arrow-up text-green-500 mr-4"></i>
+                          46,53%
                         </td>
                       </tr>
-                    {% endfor %}
-
+                      <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                          /argon/index.html
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          3,985
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          319
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
+                          46,53%
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                          /argon/charts.html
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          3,513
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          294
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
+                          36,49%
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                          /argon/tables.html
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          2,050
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          147
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <i class="fas fa-arrow-up text-green-500 mr-4"></i>
+                          50,87%
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                          /argon/profile.html
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          1,795
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          190
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <i class="fas fa-arrow-down text-red-500 mr-4"></i>
+                          46,53%
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
-
+            <div class="w-full xl:w-4/12 px-4">
+              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                <div class="rounded-t mb-0 px-4 py-3 border-0">
+                  <div class="flex flex-wrap items-center">
+                    <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                      <h3 class="font-semibold text-base text-gray-800">
+                        Social traffic
+                      </h3>
+                    </div>
+                    <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                      <button
+                        class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                        style="transition:all .15s ease"
+                      >
+                        See all
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="block w-full overflow-x-auto">
+                  <!-- Projects table -->
+                  <table class="items-center w-full bg-transparent border-collapse">
+                    <thead class="thead-light">
+                      <tr>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                          Referral
+                        </th>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                          Visitors
+                        </th>
+                        <th
+                          class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left"
+                          style="min-width:140px"
+                        ></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                          Facebook
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          1,480
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <div class="flex items-center">
+                            <span class="mr-2">60%</span>
+                            <div class="relative w-full">
+                              <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
+                                <div
+                                  style="width:60%"
+                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                          Facebook
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          5,480
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <div class="flex items-center">
+                            <span class="mr-2">70%</span>
+                            <div class="relative w-full">
+                              <div class="overflow-hidden h-2 text-xs flex rounded bg-green-200">
+                                <div
+                                  style="width:70%"
+                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                          Google
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          4,807
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <div class="flex items-center">
+                            <span class="mr-2">80%</span>
+                            <div class="relative w-full">
+                              <div class="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
+                                <div
+                                  style="width:80%"
+                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                          Instagram
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          3,678
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <div class="flex items-center">
+                            <span class="mr-2">75%</span>
+                            <div class="relative w-full">
+                              <div class="overflow-hidden h-2 text-xs flex rounded bg-blue-200">
+                                <div
+                                  style="width:75%"
+                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                          twitter
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          2,645
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          <div class="flex items-center">
+                            <span class="mr-2">30%</span>
+                            <div class="relative w-full">
+                              <div class="overflow-hidden h-2 text-xs flex rounded bg-orange-200">
+                                <div
+                                  style="width:30%"
+                                  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
           <footer class="block py-4">
-
+            <div class="container mx-auto px-4">
+              <hr class="mb-4 border-b-1 border-gray-300" />
+              <div class="flex flex-wrap items-center md:justify-between justify-center">
+                <div class="w-full md:w-4/12 px-4">
+                  <div class="text-sm text-gray-600 font-semibold py-1">
+                    Copyright © <span id="javascript-date"></span>
+                    <a
+                      href="https://www.creative-tim.com"
+                      class="text-gray-600 hover:text-gray-800 text-sm font-semibold py-1"
+                    >
+                      Creative Tim
+                    </a>
+                  </div>
+                </div>
+                <div class="w-full md:w-8/12 px-4">
+                  <ul class="flex flex-wrap list-none md:justify-end  justify-center">
+                    <li>
+                      <a
+                        href="https://www.creative-tim.com"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-semibold block py-1 px-3"
+                      >
+                        Creative Tim
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.creative-tim.com/presentation"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-semibold block py-1 px-3"
+                      >
+                        About Us
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="http://blog.creative-tim.com"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-semibold block py-1 px-3"
+                      >
+                        Blog
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://github.com/creativetimofficial/tailwind-starter-kit/blob/master/LICENSE.md"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-semibold block py-1 px-3"
+                      >
+                        MIT License
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </footer>
         </div>
       </div>
@@ -752,33 +1083,30 @@
         };
         ctx = document.getElementById("bar-chart").getContext("2d");
         window.myBar = new Chart(ctx, config);
+
+        var config = {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: {{ data|safe }},
+            backgroundColor: [
+              '#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
+            ],
+            label: 'Population'
+          }],
+          labels: {{ labels|safe }}
+        },
+        options: {
+          responsive: true
+        }
+      };
+
+      window.onload = function() {
+        var ctx = document.getElementById('pie-chart').getContext('2d');
+        window.myPie = new Chart(ctx, config);
+      };
+ 
       })();
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-  <script>
-
-    var config = {
-      type: 'pie',
-      data: {
-        datasets: [{
-          data: {{ data|safe }},
-          backgroundColor: [
-            '#b8cdca', '#eac1dc', '#c3b4df', '#d2e6f1', '#D3D3D3'
-          ],
-          label: 'Population'
-        }],
-        labels: {{ labels|safe }}
-      },
-      options: {
-        responsive: true
-      }
-    };
-
-    window.onload = function() {
-      var ctx = document.getElementById('pie-chart').getContext('2d');
-      window.myPie = new Chart(ctx, config);
-    };
-
-  </script>
   </body>
 </html>
