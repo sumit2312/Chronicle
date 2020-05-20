@@ -76,7 +76,7 @@ class ArticleForm(forms.ModelForm):
 class ArticleFormFinal(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ["volume", "issue", "issue_title", "title", "abstract", "text", "state", "published_at"]
+        fields = ["volume", "issue", "issue_title", "title", "abstract", "text", "state",]
 
         widgets = {
             'title': forms.TextInput(attrs={

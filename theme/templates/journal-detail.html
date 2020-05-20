@@ -134,9 +134,10 @@
                 <h1 class="text-gray-800 text-4xl font-bold mb-4">{{ journal.code }}</h1>
                 <p class="text-gray-800 mb-4">{{ journal.subject }}</p>
                 <p class="mb-4">{{ journal.description }}</p>
-{#                {% if user.is_authenticated and user.is_author %}#}
+                {% if request.user.is_author %}
                     <a href="{{ journal.id }}/submit-article" class="gradient inline-block px-3 py-2 mt-5 bg-teal-500 text-white rounded shadow">Submit an article</a>
-{#                {% endif %}#}
+                {% endif %}
+                {% comment %} <h1>{{ request.user.is_author }}</h1> {% endcomment %}
             </div>
             <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
                 <div class="ml-16  ">

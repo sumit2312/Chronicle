@@ -42,7 +42,9 @@ class SignUpView(CreateView):
 @login_required
 def where_next(request):
     """Simple redirector to figure out where the user goes next."""
-    if request.user.user_type == "AUTHOR":
+    if request.user.is_anonymous:
+        return HttpResponse(reverse('login'))
+    elif request.user.user_type == "AUTHOR":
         return HttpResponseRedirect(reverse('author-profile'))
     elif request.user.user_type == "EDITOR":
         return HttpResponseRedirect(reverse('editor-profile'))
@@ -162,7 +164,7 @@ def article_view(request, article_id):
     return render(request, template_name, context)
 
 
-@login_required
+
 @user_passes_test(is_author)
 def submit_article(request, journal_id):
     if request.method == "POST":

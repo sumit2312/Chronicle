@@ -139,7 +139,7 @@ CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
 LOGIN_REDIRECT_URL = "/profiles/wherenext/"
 LOGOUT_REDIRECT_URL = 'home'
 
-
+LOGIN_URL = '/profiles/login/'
 
 CKEDITOR_CONFIGS = {
     'default': {

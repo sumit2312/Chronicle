@@ -62,6 +62,9 @@ class MyUser(AbstractBaseUser):
     def __str__(self):
         return self.email
 
+    def is_author(self):
+        return self.user_type=="AUTHOR"
+
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
         # Simplest possible answer: Yes, always
@@ -137,7 +140,7 @@ class Article(models.Model):
     issue = models.IntegerField(default=1)
     issue_title = models.CharField(blank=True, max_length=300)
     journal = models.ForeignKey(Journal, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=timezone.now)
+    date = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=500)
     author = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     abstract = models.TextField()
@@ -161,4 +164,4 @@ class EditorNote(models.Model):
 
     def __str__(self):
         return "Article {article_pk} note at {created_at}".format(article_pk=self.article.pk,
-                                                                  created_at=self.created_at)
+                                                                    created_at=self.created_at)
